@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Franckess Blog</title>
+    <link>/</link>
+    <description>Recent content on Franckess Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 05 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rene To The World</title>
+      <link>/post/rene-to-the-world/</link>
+      <pubDate>Tue, 05 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rene-to-the-world/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this to:
+fit &amp;lt;- lm(dist ~ speed + I(speed^2), data = cars) summary(fit) ## ## Call: ## lm(formula = dist ~ speed + I(speed^2), data = cars) ## ## Residuals: ## Min 1Q Median 3Q Max ## -28.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Who Is Rene?  Intro I am a Artificial Intelligence &amp;amp; Machine Learning Engineer working in the various industries around 3 years as a consultant. He had worked in a commerical sectors for a couple of years and moved to government sectors. He has been exposed to diverse machine learning and deep learning projects, experienced in various big data engineering projects including Hadoop, Spark, Kafka, etc.
+Minkyu’s Expertises
+ ML/AI Infrastructure Cloud Computing &amp;amp; Architect (Amazon Web Service) Data Pipelining — Batch &amp;amp; Streaming Machine Learning &amp;amp; Deep Learning   Education Georgia Institute of Technology</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Rene Essomba">
+<meta name="keywords" content=", Rene Essomba, actuarial, data, science, fitness, christian">
+<meta name="description" content="A1. Simple Linear Regression 1. Estimated Simple Regression Equation (link) If we choose the parameters \(\alpha\) and \(\beta\) in the simple linear regression model so as to minimize the sum of squares of the error term \(\epsilon\), we will have the so-called estimated simple regression equation. It allows us to compute fitted values of y based on values of x. \[\hat{y} = ax &#43; b\]
+Problem Apply the simple linear regression model for the data set faithful, and estimate the next eruption duration if the waiting time since the last eruption has been 80 minutes.">
+
+
+<meta property="og:description" content="A1. Simple Linear Regression 1. Estimated Simple Regression Equation (link) If we choose the parameters \(\alpha\) and \(\beta\) in the simple linear regression model so as to minimize the sum of squares of the error term \(\epsilon\), we will have the so-called estimated simple regression equation. It allows us to compute fitted values of y based on values of x. \[\hat{y} = ax &#43; b\]
+Problem Apply the simple linear regression model for the data set faithful, and estimate the next eruption duration if the waiting time since the last eruption has been 80 minutes.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linear Regression">
+<meta name="twitter:title" content="Linear Regression">
+<meta property="og:url" content="/post/linear-regression/">
+<meta property="twitter:url" content="/post/linear-regression/">
+<meta property="og:site_name" content="Franckess Blog">
+<meta property="og:description" content="A1. Simple Linear Regression 1. Estimated Simple Regression Equation (link) If we choose the parameters \(\alpha\) and \(\beta\) in the simple linear regression model so as to minimize the sum of squares of the error term \(\epsilon\), we will have the so-called estimated simple regression equation. It allows us to compute fitted values of y based on values of x. \[\hat{y} = ax &#43; b\]
+Problem Apply the simple linear regression model for the data set faithful, and estimate the next eruption duration if the waiting time since the last eruption has been 80 minutes.">
+<meta name="twitter:description" content="A1. Simple Linear Regression 1. Estimated Simple Regression Equation (link) If we choose the parameters \(\alpha\) and \(\beta\) in the simple linear regression model so as to minimize the sum of squares of the error term \(\epsilon\), we will have the so-called estimated simple regression equation. It allows us to compute fitted values of y based on values of x. \[\hat{y} = ax &#43; b\]
+Problem Apply the simple linear regression model for the data set faithful, and estimate the next eruption duration if the waiting time since the last eruption has been 80 minutes.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-05-14T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2020-05-14T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Statistics">
+    
+  
+  
+    
+      <meta property="article:tag" content="Plot">
+    
+      <meta property="article:tag" content="Regression">
+    
+      <meta property="article:tag" content="Mathematics">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@franckess">
+
+
+  <meta name="twitter:creator" content="@franckess">
+
+
+
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/e7881f91cb8ab1308d269875632c69e8?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/e7881f91cb8ab1308d269875632c69e8?s=640">
+
+
+    <title>Linear Regression</title>
+
+    <link rel="icon" href="images/pixel_me.png">
+    
+
+    
+
+    <link rel="canonical" href="/post/linear-regression/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Franckess Blog</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/e7881f91cb8ab1308d269875632c69e8?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Rene Essomba</h4>
+        
+          <h5 class="sidebar-profile-bio">Actuarial Science | Data Science | Research &amp; Innovation | Fitness | Christian</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home" title='Home'></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/post">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-file-text-o" title='Blog'></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/projects">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-area-chart" title='Projects'></i>
+      
+      <span class="sidebar-button-desc">Projects</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/franckess">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github" title='Github'></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/reneessomba/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin" title='LinkedIn'></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://instagram.com/franckess_fit">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-instagram" title='Instagram'></i>
+      
+      <span class="sidebar-button-desc">Instagram</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Linear Regression
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-05-14T00:00:00Z">
+        
+  May 14, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/statistics">Statistics</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+
+
+<div id="a1.-simple-linear-regression" class="section level1">
+<h1>A1. Simple Linear Regression</h1>
+<div id="estimated-simple-regression-equation-link" class="section level2">
+<h2>1. Estimated Simple Regression Equation (<a href="http://www.r-tutor.com/elementary-statistics/simple-linear-regression">link</a>)</h2>
+<p>If we choose the parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> in the <a href="www.r-tutor.com/node/91">simple linear regression model</a> so as to minimize the sum of squares of the error term <span class="math inline">\(\epsilon\)</span>, we will have the so-called <strong>estimated simple regression equation</strong>. It allows us to compute <strong>fitted values</strong> of <em>y</em> based on values of <em>x</em>. <span class="math display">\[\hat{y} = ax + b\]</span></p>
+<div id="problem" class="section level3">
+<h3>Problem</h3>
+<p>Apply the simple linear regression model for the data set <a href="www.r-tutor.com/node/25">faithful</a>, and estimate the next eruption duration if the waiting time since the last eruption has been 80 minutes.</p>
+</div>
+<div id="solution" class="section level3">
+<h3>Solution</h3>
+<p>We apply the <code>lm</code> function to a formula that describes the variable <code>eruptions</code> by the variable <code>waiting</code>, and save the linear regression model in a new variable <code>eruption.lm</code>.</p>
+<pre class="r"><code>eruption.lm = lm(eruptions ~ waiting, data = faithful)</code></pre>
+<p>Then we extract the parameters of the estimated regression equation with the coefficients function.</p>
+<pre class="r"><code>coeffs = coefficients(eruption.lm) 
+coeffs</code></pre>
+<pre><code>## (Intercept)     waiting 
+## -1.87401599  0.07562795</code></pre>
+<p>We now fit the eruption duration using the estimated regression equation</p>
+<pre class="r"><code>waiting = 80  # waiting time
+duration = coeffs[1] + coeffs[2]*waiting
+duration</code></pre>
+<pre><code>## (Intercept) 
+##     4.17622</code></pre>
+</div>
+<div id="answer" class="section level3">
+<h3>Answer</h3>
+<p>Based on the simple linear regression model, if the waiting time since the last eruption has been 80 minutes, we expect the next one to last 4.1762 minutes.</p>
+</div>
+<div id="alternative-solution" class="section level3">
+<h3>Alternative Solution</h3>
+<p>We wrap the waiting parameter value inside a new <a href="www.r-tutor.com/node/10">data frame</a> named newdata.</p>
+<pre class="r"><code>newdata = data.frame(waiting = 80) # wrap the parameter</code></pre>
+<p>Then we apply the predict function to eruption.lm along with newdata</p>
+<pre class="r"><code>predict(eruption.lm, newdata) # apply predict</code></pre>
+<pre><code>##       1 
+## 4.17622</code></pre>
+</div>
+</div>
+<div id="coefficient-of-determination" class="section level2">
+<h2>2. Coefficient of Determination</h2>
+<p>The coefficient of determination of a <a href="www.r-tutor.com/node/91">linear regression model</a> is the quotient of the <a href="www.r-tutor.com/node/42">variances</a> of the <a href="www.r-tutor.com/node/92">fitted values</a> and observed values of the dependent variable. If we denote <span class="math inline">\(y_i\)</span> as the observed values of the dependent variable, <span class="math inline">\(\bar{y}\)</span> as its <a href="www.r-tutor.com/node/35">mean</a>, and <span class="math inline">\(\hat{y}_i\)</span> as the fitted value, then the coefficient of determination is: <span class="math display">\[\frac{\sum\left(\hat{y}_i - \bar{y}\right)^2}{\sum\left(y_i - \bar{y}\right)^2}\]</span></p>
+<div id="problem-1" class="section level3">
+<h3>Problem</h3>
+<p>Find the coefficient of determination for the simple linear regression model of the data set <a href="www.r-tutor.com/node/25">faithful</a>.</p>
+</div>
+<div id="solution-1" class="section level3">
+<h3>Solution</h3>
+<p>We apply the <code>lm</code> function to a formula that describes the variable <code>eruptions</code> by the variable <code>waiting</code>, and save the linear regression model in a new variable <code>eruption.lm</code>.</p>
+<pre class="r"><code>eruption.lm = lm(eruptions ~ waiting, data = faithful)</code></pre>
+<p>Then we extract the coefficient of determination from the r.squared attribute of its summary.</p>
+<pre class="r"><code>summary(eruption.lm)$r.squared</code></pre>
+<pre><code>## [1] 0.8114608</code></pre>
+</div>
+<div id="answer-1" class="section level3">
+<h3>Answer</h3>
+<p>The coefficient of determination of the simple linear regression model for the data set faithful is <span class="math inline">\(0.8114608\)</span></p>
+</div>
+<div id="note" class="section level3">
+<h3>Note</h3>
+<p>Further detail of the <code>r.squared attribute</code> can be found in the R documentation.</p>
+<pre class="r"><code>help(summary.lm)</code></pre>
+</div>
+</div>
+<div id="significance-test-for-linear-regression" class="section level2">
+<h2>3. Significance Test for Linear Regression</h2>
+<p>Assume that the error term <span class="math inline">\(\epsilon\)</span> in the <a href="www.r-tutor.com/node/91">linear regression model</a> is independent of <span class="math inline">\(x\)</span>, and is <a href="www.r-tutor.com/node/58">normally distributed</a>, with zero <a href="www.r-tutor.com/node/35">mean</a> and constant <a href="www.r-tutor.com/node/42">variance</a>. We can decide whether there is any significant relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> by testing the null hypothesis that <span class="math inline">\(\beta = 0\)</span>.</p>
+<div id="problem-2" class="section level3">
+<h3>Problem</h3>
+<p>Decide whether there is a significant relationship between the variables in the linear regression model of the data set <a href="www.r-tutor.com/node/25">faithful</a> at .05 significance level.</p>
+</div>
+<div id="solution-2" class="section level3">
+<h3>Solution</h3>
+<p>We apply the <code>lm</code> function to a formula that describes the variable <code>eruptions</code> by the variable <code>waiting</code>, and save the linear regression model in a new variable <code>eruption.lm</code>.</p>
+<pre class="r"><code>eruption.lm = lm(eruptions ~ waiting, data = faithful)</code></pre>
+<p>Then we print out the F-statistics of the significance test with the summary function</p>
+<pre class="r"><code>summary(eruption.lm)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = eruptions ~ waiting, data = faithful)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.29917 -0.37689  0.03508  0.34909  1.19329 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -1.874016   0.160143  -11.70   &lt;2e-16 ***
+## waiting      0.075628   0.002219   34.09   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.4965 on 270 degrees of freedom
+## Multiple R-squared:  0.8115, Adjusted R-squared:  0.8108 
+## F-statistic:  1162 on 1 and 270 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div id="answer-2" class="section level3">
+<h3>Answer</h3>
+<p>As the p-value is much less than 0.05, we reject the null hypothesis that <span class="math inline">\(\beta = 0\)</span>. Hence there is a significant relationship between the variables in the linear regression model of the data set faithful.</p>
+</div>
+<div id="note-1" class="section level3">
+<h3>Note</h3>
+<p>Further detail of the <code>summary</code> function for linear regression model can be found in the R documentation.</p>
+<pre class="r"><code>help(summary.lm)</code></pre>
+</div>
+</div>
+<div id="confidence-interval-for-linear-regression" class="section level2">
+<h2>4. Confidence Interval for Linear Regression</h2>
+<p>Assume that the error term <span class="math inline">\(\epsilon\)</span> in the <a href="www.r-tutor.com/node/91">linear regression model</a> is independent of <span class="math inline">\(x\)</span>, and is <a href="www.r-tutor.com/node/58">normally distributed</a>, with zero <a href="www.r-tutor.com/node/35">mean</a> and constant <a href="www.r-tutor.com/node/42">variance</a>. For a given value of <span class="math inline">\(x\)</span>, the interval estimate for the mean of the dependent variable, <span class="math inline">\(\bar{y}\)</span> , is called the <strong>confidence interval</strong>.</p>
+<div id="problem-3" class="section level3">
+<h3>Problem</h3>
+<p>In the data set <a href="www.r-tutor.com/node/25">faithful</a>, develop a 95% confidence interval of the mean eruption duration for the waiting time of 80 minutes.</p>
+</div>
+<div id="solution-3" class="section level3">
+<h3>Solution</h3>
+<p>We apply the <code>lm</code> function to a formula that describes the variable <code>eruptions</code> by the variable <code>waiting</code>, and save the linear regression model in a new variable <code>eruption.lm</code>.</p>
+<pre class="r"><code>attach(faithful) # attach the data frame
+eruption.lm = lm(eruptions ~ waiting)</code></pre>
+<p>Then we create a new <a href="www.r-tutor.com/node/10">data frame</a> that set the waiting time value.</p>
+<pre class="r"><code>newdata = data.frame(waiting=80)</code></pre>
+<p>We now apply the predict function and set the predictor variable in the newdata argument. We also set the interval type as “confidence”, and use the default 0.95 confidence level.</p>
+<pre class="r"><code>predict(eruption.lm, newdata, interval = &quot;confidence&quot;)</code></pre>
+<pre><code>##       fit      lwr      upr
+## 1 4.17622 4.104848 4.247592</code></pre>
+<pre class="r"><code>detach(faithful) # clean up</code></pre>
+</div>
+<div id="answer-3" class="section level3">
+<h3>Answer</h3>
+<p>The 95% confidence interval of the mean eruption duration for the waiting time of 80 minutes is between 4.1048 and 4.2476 minutes.</p>
+</div>
+<div id="note-2" class="section level3">
+<h3>Note</h3>
+<p>Further detail of the <code>predict</code> function for linear regression model can be found in the R documentation.</p>
+<pre class="r"><code>help(&quot;predict.lm&quot;)</code></pre>
+</div>
+</div>
+<div id="prediction-interval-for-linear-regression" class="section level2">
+<h2>5. Prediction Interval for Linear Regression</h2>
+<p>Assume that the error term <span class="math inline">\(\epsilon\)</span> in the <a href="www.r-tutor.com/node/91">linear regression model</a> is independent of <span class="math inline">\(x\)</span>, and is <a href="www.r-tutor.com/node/58">normally distributed</a>, with zero <a href="www.r-tutor.com/node/35">mean</a> and constant <a href="www.r-tutor.com/node/42">variance</a>. For a given value of <span class="math inline">\(x\)</span>, the interval estimate for the dependent variable, <span class="math inline">\(y\)</span> is called the <strong>prediction interval</strong>.</p>
+<div id="problem-4" class="section level3">
+<h3>Problem</h3>
+<p>In the data set <a href="www.r-tutor.com/node/25">faithful</a>, develop a 95% prediction interval of the eruption duration for the waiting time of 80 minutes.</p>
+</div>
+<div id="solution-4" class="section level3">
+<h3>Solution</h3>
+<p>We apply the <code>lm</code> function to a formula that describes the variable <code>eruptions</code> by the variable <code>waiting</code>, and save the linear regression model in a new variable <code>eruption.lm</code>.</p>
+<pre class="r"><code>attach(faithful) # attach the data frame
+eruption.lm = lm(eruptions ~ waiting)</code></pre>
+<p>Then we create a new <a href="www.r-tutor.com/node/10">data frame</a> that set the waiting time value.</p>
+<pre class="r"><code>newdata = data.frame(waiting=80)</code></pre>
+<p>We now apply the predict function and set the predictor variable in the newdata argument. We also set the interval type as “confidence”, and use the default 0.95 confidence level.</p>
+<pre class="r"><code>predict(eruption.lm, newdata, interval = &quot;predict&quot;)</code></pre>
+<pre><code>##       fit      lwr      upr
+## 1 4.17622 3.196089 5.156351</code></pre>
+<pre class="r"><code>detach(faithful) # clean up</code></pre>
+</div>
+<div id="answer-4" class="section level3">
+<h3>Answer</h3>
+<p>The 95% prediction interval of the eruption duration for the waiting time of 80 minutes is between 3.1961 and 5.1564 minutes.</p>
+</div>
+<div id="note-3" class="section level3">
+<h3>Note</h3>
+<p>Further detail of the <code>predict</code> function for linear regression model can be found in the R documentation.</p>
+<pre class="r"><code>help(&quot;predict.lm&quot;)</code></pre>
+</div>
+</div>
+<div id="residual-plot" class="section level2">
+<h2>6. Residual Plot</h2>
+<p>The residual data of the <a href="www.r-tutor.com/node/91">simple linear regression model</a> is the difference between the observed data of the dependent variable <span class="math inline">\(y\)</span> and the <a href="www.r-tutor.com/node/92">fitted values</a> <span class="math inline">\(\hat{y}\)</span>. <span class="math display">\[Residual = y - \hat{y}\]</span></p>
+<div id="problem-5" class="section level3">
+<h3>Problem</h3>
+<p>Plot the residual of the simple linear regression model of the data set <a href="www.r-tutor.com/node/25">faithful</a> against the independent variable waiting.</p>
+</div>
+<div id="solution-5" class="section level3">
+<h3>Solution</h3>
+<p>We apply the <code>lm</code> function to a formula that describes the variable <code>eruptions</code> by the variable <code>waiting</code>, and save the linear regression model in a new variable <code>eruption.lm</code>. Then we compute the residual with the <code>resid</code> function.</p>
+<pre class="r"><code>eruption.lm = lm(eruptions ~ waiting, data = faithful)
+eruption.es = resid(eruption.lm)</code></pre>
+<p>We now plot the residual against the observed values of the variable waiting.</p>
+<pre class="r"><code>plot(faithful$waiting, eruption.es,
+     ylab = &quot;Residuals&quot;, xlab = &quot;Waiting Time&quot;, 
+     main = &quot;Old Faithful Eruptions&quot;)
+abline(0, 0) # horizon</code></pre>
+<p><img src="/post/2020-05-14-linear-regression-part1_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+<div id="note-4" class="section level3">
+<h3>Note</h3>
+<p>Further detail of the <code>resid</code> function for linear regression model can be found in the R documentation.</p>
+<pre class="r"><code>help(&quot;resid&quot;)</code></pre>
+</div>
+</div>
+<div id="standardized-residual" class="section level2">
+<h2>7. Standardized Residual</h2>
+<p>The <strong>standardized residual</strong> is the <a href="www.r-tutor.com/node/97">residual</a> divided by its <a href="www.r-tutor.com/node/43">standard deviation</a>. <span class="math display">\[\text{Standardized Residual}_i = \frac{Residual_i}{\text{Standard Deviation of Residual}_i} \]</span></p>
+<div id="problem-6" class="section level3">
+<h3>Problem</h3>
+<p>Plot the standardized residual of the simple linear regression model of the data set <a href="www.r-tutor.com/node/25">faithful</a> against the independent variable waiting.</p>
+</div>
+<div id="solution-6" class="section level3">
+<h3>Solution</h3>
+<p>We apply the <code>lm</code> function to a formula that describes the variable <code>eruptions</code> by the variable <code>waiting</code>, and save the linear regression model in a new variable <code>eruption.lm</code>. Then we compute the standardized residual with the <code>rstandard</code> function.</p>
+<pre class="r"><code>eruption.lm = lm(eruptions ~ waiting, data = faithful)
+eruption.stdres = rstandard(eruption.lm)</code></pre>
+<p>We now plot the standardized residual against the observed values of the variable waiting.</p>
+<pre class="r"><code>plot(faithful$waiting, eruption.stdres,
+     ylab = &quot;Standardized Residuals&quot;, 
+     xlab = &quot;Waiting Time&quot;, 
+     main = &quot;Old Faithful Eruptions&quot;)
+abline(0, 0) # horizon</code></pre>
+<p><img src="/post/2020-05-14-linear-regression-part1_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/plot/">Plot</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/regression/">Regression</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/mathematics/">Mathematics</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/post/rene-to-the-world/" data-tooltip="Rene To The  World">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://github.com/franckess">Rene F. Essomba</a>. Hugo theme <a href="https://themes.gohugo.io/hugo-tranquilpeak-theme">tranquilpeak</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/post/rene-to-the-world/" data-tooltip="Rene To The  World">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/e7881f91cb8ab1308d269875632c69e8?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Rene Essomba</h4>
+    
+      <div id="about-card-bio">Actuarial Science | Data Science | Research &amp; Innovation | Fitness | Christian</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Analytics Professional
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Australia
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('/images/photo3.jpeg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
