@@ -1,0 +1,124 @@
+---
+title: "How I Pass The Azure DP-100 Exam"
+author: "Rene Essomba"
+date: '2020-06-17'
+slug: 'how-i-pass-azure-dp-100-exam'
+tags:
+- Azure Machine Learning
+- Cloud Computing
+- Data Science
+- MLOps
+categories:
+- Azure Machine Learning
+- Cloud Computing
+- Data Science
+- MLOps
+subtitle: ''
+summary: ''
+coverImage: https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?cs=srgb&dl=coding-computer-data-depth-of-field-577585.jpg&fm=jpg
+image:
+  caption: 'link: https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg'
+  focal_point: ''
+  preview_only: true
+thumbnailImagePosition : left
+thumbnailImage: https://images.pexels.com/photos/2698465/pexels-photo-2698465.jpeg?cs=srgb&dl=man-looking-at-ipad-pro-2698465.jpg&fm=jpg
+editor_options: 
+  chunk_output_type: console
+output:
+  blogdown::html_page
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+Like many people, I kicked off this year with a long list of resolutions. My list covers many items such as getting my fitness to the next level, but that's a story for another time. One of my top three goals, and the one has come up regularly over the last couple of years, was to make an active effort to learn cloud computing. Luckily, my current employer has chosen Microsoft Azure as their cloud platform, hence allowing me to focus on it.
+
+Having just completed my machine learning course with Georgia Tech (in May 2020) and being more fluent in `Python`, it was pretty obvious to me to choose Azure DP-100 exam.
+
+
+# What is the DP-100 Exam?
+
+The Azure DP-100 Exam: Designing and Implementing a Data Science Solution on Azure is for data geeks who use machine learning techniques to implement a data science solution using [Azure Machine Learning](https://azure.microsoft.com/en-us/services/machine-learning/).
+
+The DP-100 Exam is designed to evaluate to perform the following tasks:
+
+* Create, define and manage Azure Machine Learning workspace.
+* Create and run experiments that log metrics and train machine learning models.
+* Create and manage datastores and datasets, and use them in machine learning experiments.
+* Create and manage compute resources, and use them to run machine learning experiments at scale in the cloud.
+* Deploy predictive models as real-time or batch inference services, and consume them from client applications.
+* Perform hyperparameters tuning, automate machine learning models.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/machine-learning/media/concept-azure-machine-learning-architecture/workflow.png" />
+</p>
+
+For more details on the scope of the exam, click [here](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3VUjA).
+
+# Exam Prerequisites
+
+#### Programming Languages
+
+The bulk of the questions focus on Python programming. In other words, as a candidate sitting the exam, you must be comfortable seeing some `Python` codes _without any trace of sweat on your forehead_.
+
+There might be some `R` codes being thrown at you too. Either way, be comfortable reading/writing codes in both languages.
+
+#### Quick Installation
+
+It is recommended you create a Python virtual environment ([Miniconda](https://conda.io/miniconda.html) preferred but [virtualenv](https://virtualenv.pypa.io/en/latest/) works too) and install the SDK in it.
+
+```sh
+pip install --upgrade azureml-sdk[explain,automl,notebooks]
+```
+
+[Install the Azure Machine Learning SDK](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-create-workspace-with-python)
+
+#### Statistics/Machine Learning
+
+Here are some key concepts to know prior to sitting the exam:
+
+* Supervised Learning
+  1. Regression methods: Linear Regression, Decision Trees, Random Forest, Deep Learning, etc.
+  2. Classification: Logistic Regression, Linear Discriminant Analysis, Support Vector Machine, Multi-classification, etc.
+* Unsupervised Learning methods: Principal Component Analysis, $K-$means Clustering, etc.
+* Data Wrangling: Imputation, Imbalance Classes, etc.
+
+# Exam Preparation
+
+There aren't as many resources available as for Azure AZ-900 Exam (example!). However, here are the ones that I used to prepare for this exam:
+
+#### YouTube Links
+
+* [https://www.youtube.com/watch?v=VIsXeTuW3FU&feature=youtu.be](https://www.youtube.com/watch?v=VIsXeTuW3FU&feature=youtu.be) This video helps to install and use the Azure Machine Learning Python SDK (_video length: ~8 minutes_).
+* [https://www.youtube.com/watch?v=22F80O0tsWQ](https://www.youtube.com/watch?v=22F80O0tsWQ) This video could help to get a quick overlook of what to expect in the exam (_video length: ~19 minutes_).
+* [https://www.youtube.com/watch?v=2wBHH36dC2I&t=1796s](https://www.youtube.com/watch?v=2wBHH36dC2I&t=1796s) This video helps to get an in-depth view of the exam (_video length: ~57 minutes_).
+* [https://www.youtube.com/watch?v=mM5o14i_BCM](https://www.youtube.com/watch?v=mM5o14i_BCM) A more sinister view of the exam :P  (_video length: ~48 minutes_).
+
+#### GitHub Links
+
+* [https://github.com/MicrosoftLearning/DP100](https://github.com/MicrosoftLearning/DP100) This repo contains a series of labs and Jupyter notebooks for DP-100 by [Microsoft Learning](https://github.com/MicrosoftLearning) GitHib account. **Highly Recommende**.
+* [https://github.com/Azure/MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) This repo contains example notebooks demonstrating the Azure Machine Learning Python SDK which allows you to build, train, deploy and manage machine learning solutions using Azure.
+* [https://github.com/Arorazafin/amls-dp100-aroSynthese/blob/master/dp100-synthese-aro.ipynb](https://github.com/Arorazafin/amls-dp100-aroSynthese/blob/master/dp100-synthese-aro.ipynb) a giant Jupyter notebook with explanations in _French_ but codes are all in _English_.
+
+#### Documentation
+
+* Quickstarts, end-to-end tutorials, and how-tos on the [official documentation site for Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/).
+* [Python SDK reference](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* Azure ML Data Prep SDK [overview](https://aka.ms/data-prep-sdk), [Python SDK reference](https://aka.ms/aml-data-prep-apiref), and [tutorials and how-tos](https://aka.ms/aml-data-prep-notebooks).
+* [Pluralsight MS Azure](https://www.pluralsight.com/paths/microsoft-azure-data-scientist-dp-100) consists of 25 lectures teaching how Azure services work together to enable various parts of the Machine Learning workflow.
+* [Examtopics](https://www.examtopics.com/exams/microsoft/dp-100/view/1/) contains about 60 sample questions for free which may be helpful for exam prep.
+
+# Projects using Azure Machine Learning
+
+Visit following repos to see projects contributed by Azure Machine Learning users:
+
+* [AMLSamples](https://github.com/microsoft/MLOps) Number of end-to-end examples, including face recognition, predictive maintenance, customer churn and sentiment analysis.
+* [Learn about Natural Language Processing best practices using Azure Machine Learning service](https://github.com/microsoft/nlp)
+* [Pre-Train BERT models using Azure Machine Learning service](https://github.com/Microsoft/AzureML-BERT)
+* [Fashion MNIST with Azure Machine Learning SDK](https://github.com/amynic/azureml-sdk-fashion)
+* [UMass Amherst Student Samples](https://github.com/katiehouse3/microsoft-azure-ml-notebooks) - A number of end-to-end 
+
+machine learning notebooks, including machine translation, image classification, and customer churn, created by students in the 696DS course at UMass Amherst.
+
+_I hope you found this blogpost valuable. Please drop a comment below for feedback :-)_

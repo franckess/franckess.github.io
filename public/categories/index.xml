@@ -6,26 +6,44 @@
     <description>Recent content in Categories on Franckess Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 05 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Rmarkdown</title>
-      <link>/category/rmarkdown/</link>
-      <pubDate>Tue, 05 May 2020 00:00:00 +0000</pubDate>
+      <title>Azure Machine Learning</title>
+      <link>/category/azure-machine-learning/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/category/rmarkdown/</guid>
+      <guid>/category/azure-machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Rstats</title>
-      <link>/category/rstats/</link>
-      <pubDate>Tue, 05 May 2020 00:00:00 +0000</pubDate>
+      <title>Cloud Computing</title>
+      <link>/category/cloud-computing/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/category/rstats/</guid>
+      <guid>/category/cloud-computing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Science</title>
+      <link>/category/data-science/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/category/data-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MLOps</title>
+      <link>/category/mlops/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/category/mlops/</guid>
       <description></description>
     </item>
     
