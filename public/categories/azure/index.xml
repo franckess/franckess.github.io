@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Azure on Franckess Blog</title>
+    <link>/category/azure/</link>
+    <description>Recent content in Azure on Franckess Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/category/azure/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How I Pass The Azure DP-100 Exam</title>
+      <link>/post/how-i-pass-azure-dp-100-exam/</link>
+      <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-i-pass-azure-dp-100-exam/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this to:
+fit &amp;lt;- lm(dist ~ speed + I(speed^2), data = cars) summary(fit) ## ## Call: ## lm(formula = dist ~ speed + I(speed^2), data = cars) ## ## Residuals: ## Min 1Q Median 3Q Max ## -28.</description>
+    </item>
+    
+  </channel>
+</rss>

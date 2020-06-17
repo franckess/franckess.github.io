@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Rene Essomba">
+<meta name="keywords" content=", Rene Essomba, actuarial, data, science, fitness, christian">
+<meta name="description" content="Like many people, I kicked off this year with a long list of resolutions. My list covers many items such as getting my fitness to the next level, but that’s a story for another time. One of my top three goals, and the one has come up regularly over the last couple of years, was to make an active effort to learn cloud computing. Luckily, my current employer has chosen Microsoft Azure as their cloud platform, hence allowing me to focus on it.">
+
+
+<meta property="og:description" content="Like many people, I kicked off this year with a long list of resolutions. My list covers many items such as getting my fitness to the next level, but that’s a story for another time. One of my top three goals, and the one has come up regularly over the last couple of years, was to make an active effort to learn cloud computing. Luckily, my current employer has chosen Microsoft Azure as their cloud platform, hence allowing me to focus on it.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How I Pass The Azure DP-100 Exam">
+<meta name="twitter:title" content="How I Pass The Azure DP-100 Exam">
+<meta property="og:url" content="/post/how-i-pass-azure-dp-100-exam/">
+<meta property="twitter:url" content="/post/how-i-pass-azure-dp-100-exam/">
+<meta property="og:site_name" content="Franckess Blog">
+<meta property="og:description" content="Like many people, I kicked off this year with a long list of resolutions. My list covers many items such as getting my fitness to the next level, but that’s a story for another time. One of my top three goals, and the one has come up regularly over the last couple of years, was to make an active effort to learn cloud computing. Luckily, my current employer has chosen Microsoft Azure as their cloud platform, hence allowing me to focus on it.">
+<meta name="twitter:description" content="Like many people, I kicked off this year with a long list of resolutions. My list covers many items such as getting my fitness to the next level, but that’s a story for another time. One of my top three goals, and the one has come up regularly over the last couple of years, was to make an active effort to learn cloud computing. Luckily, my current employer has chosen Microsoft Azure as their cloud platform, hence allowing me to focus on it.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-06-17T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2020-06-17T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Azure Machine Learning">
+    
+      <meta property="article:section" content="Cloud Computing">
+    
+      <meta property="article:section" content="Data Science">
+    
+      <meta property="article:section" content="MLOps">
+    
+  
+  
+    
+      <meta property="article:tag" content="Azure Machine Learning">
+    
+      <meta property="article:tag" content="Cloud Computing">
+    
+      <meta property="article:tag" content="Data Science">
+    
+      <meta property="article:tag" content="MLOps">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@franckess">
+
+
+  <meta name="twitter:creator" content="@franckess">
+
+
+
+
+
+
+  <meta property="og:image" content="https://images.pexels.com/photos/2698465/pexels-photo-2698465.jpeg?cs=srgb&dl=man-looking-at-ipad-pro-2698465.jpg&fm=jpg">
+  <meta property="twitter:image" content="https://images.pexels.com/photos/2698465/pexels-photo-2698465.jpeg?cs=srgb&dl=man-looking-at-ipad-pro-2698465.jpg&fm=jpg">
+
+
+  <meta property="og:image" content="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?cs=srgb&dl=coding-computer-data-depth-of-field-577585.jpg&fm=jpg">
+  <meta property="twitter:image" content="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?cs=srgb&dl=coding-computer-data-depth-of-field-577585.jpg&fm=jpg">
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/e7881f91cb8ab1308d269875632c69e8?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/e7881f91cb8ab1308d269875632c69e8?s=640">
+
+
+    <title>How I Pass The Azure DP-100 Exam</title>
+
+    <link rel="icon" href="images/pixel_me.png">
+    
+
+    
+
+    <link rel="canonical" href="/post/how-i-pass-azure-dp-100-exam/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+    <script type="text/javascript" id="MathJax-script" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Config({
+     showProcessingMessages: false,
+     messageStyle: "none",
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       processEscapes: true
+     },
+     TeX: {
+       MultLineWidth: "100%",
+       equationNumbers: { autoNumber: "AMS" }
+     },
+     "HTML-CSS": { fonts: ["Latin-Modern"] }
+   });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+    var TEX = MathJax.InputJax.TeX;
+    var PREFILTER = TEX.prefilterMath;
+    TEX.Augment({
+      prefilterMath: function (math,displaymode,script) {
+        if (!displaymode) {math = "\\small{"+math+"}"}
+        return PREFILTER.call(TEX,math,displaymode,script);
+      }
+    });
+  });
+</script>
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Franckess Blog</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/e7881f91cb8ab1308d269875632c69e8?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Rene Essomba</h4>
+        
+          <h5 class="sidebar-profile-bio">Actuarial Science | Data Science | Research &amp; Innovation | Fitness | Christian</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/post">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-file-text-o" title='Blog'></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-align-left"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user", title='About'></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/franckess">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github" title='Github'></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/reneessomba/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin" title='LinkedIn'></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://instagram.com/franckess_fit">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-instagram" title='Instagram'></i>
+      
+      <span class="sidebar-button-desc">Instagram</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-left
+              "
+       style="background-image:url('https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?cs=srgb&amp;dl=coding-computer-data-depth-of-field-577585.jpg&amp;fm=jpg')"
+       data-behavior="4">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      How I Pass The Azure DP-100 Exam
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-06-17T00:00:00Z">
+        
+  June 17, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/azure-machine-learning">Azure Machine Learning</a>, 
+    
+      <a class="category-link" href="/categories/cloud-computing">Cloud Computing</a>, 
+    
+      <a class="category-link" href="/categories/data-science">Data Science</a>, 
+    
+      <a class="category-link" href="/categories/mlops">MLOps</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+
+
+<p>Like many people, I kicked off this year with a long list of resolutions. My list covers many items such as getting my fitness to the next level, but that’s a story for another time. One of my top three goals, and the one has come up regularly over the last couple of years, was to make an active effort to learn cloud computing. Luckily, my current employer has chosen Microsoft Azure as their cloud platform, hence allowing me to focus on it.</p>
+<p>Having just completed my machine learning course with Georgia Tech (in May 2020) and being more fluent in <code>Python</code>, it was pretty obvious to me to choose Azure DP-100 exam.</p>
+<div id="what-is-the-dp-100-exam" class="section level1">
+<h1>What is the DP-100 Exam?</h1>
+<p>The Azure DP-100 Exam: Designing and Implementing a Data Science Solution on Azure is for data geeks who use machine learning techniques to implement a data science solution using <a href="https://azure.microsoft.com/en-us/services/machine-learning/">Azure Machine Learning</a>.</p>
+<p>The DP-100 Exam is designed to evaluate to perform the following tasks:</p>
+<ul>
+<li>Create, define and manage Azure Machine Learning workspace.</li>
+<li>Create and run experiments that log metrics and train machine learning models.</li>
+<li>Create and manage datastores and datasets, and use them in machine learning experiments.</li>
+<li>Create and manage compute resources, and use them to run machine learning experiments at scale in the cloud.</li>
+<li>Deploy predictive models as real-time or batch inference services, and consume them from client applications.</li>
+<li>Perform hyperparameters tuning, automate machine learning models.</li>
+</ul>
+<p align="center">
+<img src="https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/machine-learning/media/concept-azure-machine-learning-architecture/workflow.png" />
+</p>
+<p>For more details on the scope of the exam, click <a href="https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3VUjA">here</a>.</p>
+</div>
+<div id="exam-prerequisites" class="section level1">
+<h1>Exam Prerequisites</h1>
+<div id="programming-languages" class="section level4">
+<h4>Programming Languages</h4>
+<p>The bulk of the questions focus on Python programming. In other words, as a candidate sitting the exam, you must be comfortable seeing some <code>Python</code> codes <em>without any trace of sweat on your forehead</em>.</p>
+<p>There might be some <code>R</code> codes being thrown at you too. Either way, be comfortable reading/writing codes in both languages.</p>
+</div>
+<div id="quick-installation" class="section level4">
+<h4>Quick Installation</h4>
+<p>It is recommended you create a Python virtual environment (<a href="https://conda.io/miniconda.html">Miniconda</a> preferred but <a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a> works too) and install the SDK in it.</p>
+<pre class="sh"><code>pip install --upgrade azureml-sdk[explain,automl,notebooks]</code></pre>
+<p><a href="https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-create-workspace-with-python">Install the Azure Machine Learning SDK</a></p>
+</div>
+<div id="statisticsmachine-learning" class="section level4">
+<h4>Statistics/Machine Learning</h4>
+<p>Here are some key concepts to know prior to sitting the exam:</p>
+<ul>
+<li>Supervised Learning
+<ol style="list-style-type: decimal">
+<li>Regression methods: Linear Regression, Decision Trees, Random Forest, Deep Learning, etc.</li>
+<li>Classification: Logistic Regression, Linear Discriminant Analysis, Support Vector Machine, Multi-classification, etc.</li>
+</ol></li>
+<li>Unsupervised Learning methods: Principal Component Analysis, <span class="math inline">\(K-\)</span>means Clustering, etc.</li>
+<li>Data Wrangling: Imputation, Imbalance Classes, etc.</li>
+</ul>
+</div>
+</div>
+<div id="exam-preparation" class="section level1">
+<h1>Exam Preparation</h1>
+<p>There aren’t as many resources available as for Azure AZ-900 Exam (example!). However, here are the ones that I used to prepare for this exam:</p>
+<div id="youtube-links" class="section level4">
+<h4>YouTube Links</h4>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=VIsXeTuW3FU&amp;feature=youtu.be">https://www.youtube.com/watch?v=VIsXeTuW3FU&amp;feature=youtu.be</a> This video helps to install and use the Azure Machine Learning Python SDK (<em>video length: ~8 minutes</em>).</li>
+<li><a href="https://www.youtube.com/watch?v=22F80O0tsWQ">https://www.youtube.com/watch?v=22F80O0tsWQ</a> This video could help to get a quick overlook of what to expect in the exam (<em>video length: ~19 minutes</em>).</li>
+<li><a href="https://www.youtube.com/watch?v=2wBHH36dC2I&amp;t=1796s">https://www.youtube.com/watch?v=2wBHH36dC2I&amp;t=1796s</a> This video helps to get an in-depth view of the exam (<em>video length: ~57 minutes</em>).</li>
+<li><a href="https://www.youtube.com/watch?v=mM5o14i_BCM">https://www.youtube.com/watch?v=mM5o14i_BCM</a> A more sinister view of the exam :P (<em>video length: ~48 minutes</em>).</li>
+</ul>
+</div>
+<div id="github-links" class="section level4">
+<h4>GitHub Links</h4>
+<ul>
+<li><a href="https://github.com/MicrosoftLearning/DP100">https://github.com/MicrosoftLearning/DP100</a> This repo contains a series of labs and Jupyter notebooks for DP-100 by <a href="https://github.com/MicrosoftLearning">Microsoft Learning</a> GitHib account. <strong>Highly Recommende</strong>.</li>
+<li><a href="https://github.com/Azure/MachineLearningNotebooks">https://github.com/Azure/MachineLearningNotebooks</a> This repo contains example notebooks demonstrating the Azure Machine Learning Python SDK which allows you to build, train, deploy and manage machine learning solutions using Azure.</li>
+<li><a href="https://github.com/Arorazafin/amls-dp100-aroSynthese/blob/master/dp100-synthese-aro.ipynb">https://github.com/Arorazafin/amls-dp100-aroSynthese/blob/master/dp100-synthese-aro.ipynb</a> a giant Jupyter notebook with explanations in <em>French</em> but codes are all in <em>English</em>.</li>
+</ul>
+</div>
+<div id="documentation" class="section level4">
+<h4>Documentation</h4>
+<ul>
+<li>Quickstarts, end-to-end tutorials, and how-tos on the <a href="https://docs.microsoft.com/en-us/azure/machine-learning/service/">official documentation site for Azure Machine Learning service</a>.</li>
+<li><a href="https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py">Python SDK reference</a></li>
+<li>Azure ML Data Prep SDK <a href="https://aka.ms/data-prep-sdk">overview</a>, <a href="https://aka.ms/aml-data-prep-apiref">Python SDK reference</a>, and <a href="https://aka.ms/aml-data-prep-notebooks">tutorials and how-tos</a>.</li>
+<li><a href="https://www.pluralsight.com/paths/microsoft-azure-data-scientist-dp-100">Pluralsight MS Azure</a> consists of 25 lectures teaching how Azure services work together to enable various parts of the Machine Learning workflow.</li>
+<li><a href="https://www.examtopics.com/exams/microsoft/dp-100/view/1/">Examtopics</a> contains about 60 sample questions for free which may be helpful for exam prep.</li>
+</ul>
+</div>
+</div>
+<div id="projects-using-azure-machine-learning" class="section level1">
+<h1>Projects using Azure Machine Learning</h1>
+<p>Visit following repos to see projects contributed by Azure Machine Learning users:</p>
+<ul>
+<li><a href="https://github.com/microsoft/MLOps">AMLSamples</a> Number of end-to-end examples, including face recognition, predictive maintenance, customer churn and sentiment analysis.</li>
+<li><a href="https://github.com/microsoft/nlp">Learn about Natural Language Processing best practices using Azure Machine Learning service</a></li>
+<li><a href="https://github.com/Microsoft/AzureML-BERT">Pre-Train BERT models using Azure Machine Learning service</a></li>
+<li><a href="https://github.com/amynic/azureml-sdk-fashion">Fashion MNIST with Azure Machine Learning SDK</a></li>
+<li><a href="https://github.com/katiehouse3/microsoft-azure-ml-notebooks">UMass Amherst Student Samples</a> - A number of end-to-end</li>
+</ul>
+<p>machine learning notebooks, including machine translation, image classification, and customer churn, created by students in the 696DS course at UMass Amherst.</p>
+<p><em>I hope you found this blogpost valuable. Please drop a comment below for feedback :-)</em></p>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/azure-machine-learning/">Azure Machine Learning</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/cloud-computing/">Cloud Computing</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/data-science/">Data Science</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/mlops/">MLOps</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://github.com/franckess">Rene Essomba</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/e7881f91cb8ab1308d269875632c69e8?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Rene Essomba</h4>
+    
+      <div id="about-card-bio">Actuarial Science | Data Science | Research &amp; Innovation | Fitness | Christian</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Analytics Professional
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Australia
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('/images/photo3.jpeg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/post\/how-i-pass-azure-dp-100-exam\/';
+          
+            this.page.identifier = '\/post\/how-i-pass-azure-dp-100-exam\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'https-franckess-com';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
