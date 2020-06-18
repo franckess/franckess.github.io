@@ -28,8 +28,8 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
 [permalinks]
   post = "/post/:slug/"
   #authors = "/author/:slug/"
-  tags = "/tag/:slug/"
-  categories = "/category/:slug/"
+  tags = "/tags/:slug/"
+  categories = "/categories/:slug/"
   about = "/about/:slug/"
   #publication_types = "/publication-type/:slug/"
 
@@ -41,8 +41,8 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
 [author]
   name = "Rene Essomba"
   bio = "Actuarial Science | Data Science | Research & Innovation | Fitness | Christian"
-  job = "Analytics Professional"
-  location = "Australia"
+  job = "Analytics Manager"
+  location = "Sydney, AU"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
   gravatarEmail = "franckess48@gmail.com"
   # Your profile picture

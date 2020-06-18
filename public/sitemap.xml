@@ -3,12 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/tag/azure-machine-learning/</loc>
+    <loc>/tags/azure-machine-learning/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/category/azure-machine-learning/</loc>
+    <loc>/categories/azure-machine-learning/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -18,22 +18,22 @@
   </url>
   
   <url>
-    <loc>/tag/cloud-computing/</loc>
+    <loc>/tags/cloud-computing/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/category/cloud-computing/</loc>
+    <loc>/categories/cloud-computing/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tag/data-science/</loc>
+    <loc>/tags/data-science/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/category/data-science/</loc>
+    <loc>/categories/data-science/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -48,12 +48,12 @@
   </url>
   
   <url>
-    <loc>/tag/mlops/</loc>
+    <loc>/tags/mlops/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/category/mlops/</loc>
+    <loc>/categories/mlops/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   

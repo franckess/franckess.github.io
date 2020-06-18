@@ -26,6 +26,7 @@ editor_options:
   chunk_output_type: console
 output:
   blogdown::html_page
+comments: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -75,10 +76,10 @@ pip install --upgrade azureml-sdk[explain,automl,notebooks]
 Here are some key concepts to know prior to sitting the exam:
 
 * Supervised Learning
-  1. Regression methods: Linear Regression, Decision Trees, Random Forest, Deep Learning, etc.
-  2. Classification: Logistic Regression, Linear Discriminant Analysis, Support Vector Machine, Multi-classification, etc.
-* Unsupervised Learning methods: Principal Component Analysis, $K-$means Clustering, etc.
-* Data Wrangling: Imputation, Imbalance Classes, etc.
+  1. Regression methods: _Linear Regression, Decision Trees, Random Forest, Deep Learning, etc_.
+  2. Classification methods: _Logistic Regression, Linear Discriminant Analysis, Support Vector Machine, Multi-classification, etc_.
+* Unsupervised Learning methods: _Principal Component Analysis, $K-$means Clustering, etc_.
+* Data Wrangling: _Imputation, Imbalance Classes, etc_.
 
 #### Programming Languages
 
@@ -99,7 +100,7 @@ There aren't as many resources available as for Azure AZ-900 Exam (example!). Ho
 
 #### GitHub Links
 
-* [https://github.com/MicrosoftLearning/DP100](https://github.com/MicrosoftLearning/DP100) This repo contains a series of labs and Jupyter notebooks for DP-100 by [Microsoft Learning](https://github.com/MicrosoftLearning) GitHib account. **Highly Recommende**.
+* [https://github.com/MicrosoftLearning/DP100](https://github.com/MicrosoftLearning/DP100) This repo contains a series of labs and Jupyter notebooks for the DP-100 exam by [Microsoft Learning](https://github.com/MicrosoftLearning) GitHib account. **Highly Recommended**.
 * [https://github.com/Azure/MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) This repo contains example notebooks demonstrating the Azure Machine Learning Python SDK which allows you to build, train, deploy and manage machine learning solutions using Azure.
 * [https://github.com/Arorazafin/amls-dp100-aroSynthese/blob/master/dp100-synthese-aro.ipynb](https://github.com/Arorazafin/amls-dp100-aroSynthese/blob/master/dp100-synthese-aro.ipynb) a giant Jupyter notebook with explanations in _French_ but codes are all in _English_.
 
