@@ -4,7 +4,7 @@
 
 Hello visitor!
 
-This is the github repo to my blog / portfolio that you can check out here - [franckess.com](https://www.franckess.com/)
+This is the github repo to my blog / portfolio that you can check out here - [franckess.com](https://franckess.com/)
 
 Here are the technologies/tools and their references that I'm mostly using to run this blog -   
 
