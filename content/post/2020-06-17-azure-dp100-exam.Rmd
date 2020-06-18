@@ -41,7 +41,7 @@ Having just completed my machine learning course with Georgia Tech (in May 2020)
 
 The Azure DP-100 Exam: Designing and Implementing a Data Science Solution on Azure is for data geeks who use machine learning techniques to implement a data science solution using [Azure Machine Learning](https://azure.microsoft.com/en-us/services/machine-learning/).
 
-The DP-100 Exam is designed to evaluate to perform the following tasks:
+The DP-100 Exam is designed to evaluate candidates for the following tasks:
 
 * Create, define and manage Azure Machine Learning workspace.
 * Create and run experiments that log metrics and train machine learning models.
@@ -50,6 +50,8 @@ The DP-100 Exam is designed to evaluate to perform the following tasks:
 * Deploy predictive models as real-time or batch inference services, and consume them from client applications.
 * Perform hyperparameters tuning, automate machine learning models.
 
+Here is a diagram displaying the learning outcome visually.
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/machine-learning/media/concept-azure-machine-learning-architecture/workflow.png" />
 </p>
@@ -57,12 +59,6 @@ The DP-100 Exam is designed to evaluate to perform the following tasks:
 For more details on the scope of the exam, click [here](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3VUjA).
 
 # Exam Prerequisites
-
-#### Programming Languages
-
-The bulk of the questions focus on Python programming. In other words, as a candidate sitting the exam, you must be comfortable seeing some `Python` codes _without any trace of sweat on your forehead_.
-
-There might be some `R` codes being thrown at you too. Either way, be comfortable reading/writing codes in both languages.
 
 #### Quick Installation
 
@@ -83,6 +79,12 @@ Here are some key concepts to know prior to sitting the exam:
   2. Classification: Logistic Regression, Linear Discriminant Analysis, Support Vector Machine, Multi-classification, etc.
 * Unsupervised Learning methods: Principal Component Analysis, $K-$means Clustering, etc.
 * Data Wrangling: Imputation, Imbalance Classes, etc.
+
+#### Programming Languages
+
+The bulk of the questions focus on Python programming. In other words, as a candidate sitting the exam, you must be comfortable seeing some `Python` codes _without any trace of sweat on your forehead_.
+
+There might be some `R` codes being thrown at you too. Either way, be comfortable reading/writing codes in both languages.
 
 # Exam Preparation
 
@@ -117,8 +119,6 @@ Visit following repos to see projects contributed by Azure Machine Learning user
 * [Learn about Natural Language Processing best practices using Azure Machine Learning service](https://github.com/microsoft/nlp)
 * [Pre-Train BERT models using Azure Machine Learning service](https://github.com/Microsoft/AzureML-BERT)
 * [Fashion MNIST with Azure Machine Learning SDK](https://github.com/amynic/azureml-sdk-fashion)
-* [UMass Amherst Student Samples](https://github.com/katiehouse3/microsoft-azure-ml-notebooks) - A number of end-to-end 
+* [UMass Amherst Student Samples](https://github.com/katiehouse3/microsoft-azure-ml-notebooks) - A number of end-to-end machine learning notebooks, including machine translation, image classification, and customer churn.
 
-machine learning notebooks, including machine translation, image classification, and customer churn, created by students in the 696DS course at UMass Amherst.
-
-_I hope you found this blogpost valuable. Please drop a comment below for feedback :-)_
+_I hope you found this blogpost valuable. Feel free to reach out if have any feedback or need assistance :-)_
