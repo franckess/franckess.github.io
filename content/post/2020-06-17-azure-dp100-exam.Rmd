@@ -33,7 +33,7 @@ comments: yes
 knitr::opts_chunk$set(collapse = TRUE)
 ```
 
-Like many people, I kicked off this year with a long list of resolutions. My list covers many items such as getting my fitness to the next level, but that's a story for another time. One of my top three goals, and the one has come up regularly over the last couple of years, was to make an active effort to learn cloud computing. Luckily, my current employer has chosen Microsoft Azure as their cloud platform, hence allowing me to focus on it.
+Like many people, I kicked off this year with a long list of resolutions. My list includes items like learning how to do a backflip, but that's a story for another time! One of my top three goals, and the one has come up regularly over the last couple of years, was to make an active effort learning cloud computing. Luckily, my current employer has chosen Microsoft Azure as their cloud platform, hence allowing me to focus on it.
 
 Having just completed my machine learning course with Georgia Tech (in May 2020) and being more fluent in `Python`, it was pretty obvious to me to choose Azure DP-100 exam.
 
