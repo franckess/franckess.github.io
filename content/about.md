@@ -8,13 +8,15 @@ Who Is Rene?
 
 I am an Analytics Professional working for one of the largest life insurance company in Australia. I have acquired work experience across different verticals including consulting, marketing, insurance (both life and general) and academia.
 
-**Rene’s Expertises**
+**Top Skills**
 
 *   `Computational Statistics`
 *   `Actuarial Science`
 *   `Cloud Computing`
 *   `Machine Learning & Deep Learning`
 *   `Data Visualisation`
+*   `Mentoring`
+*   `Teaching`
 
 * * *
 
