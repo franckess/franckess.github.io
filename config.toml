@@ -116,6 +116,13 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
   name = "Instagram"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-instagram\" title='Instagram'></i>"
   url = "https://instagram.com/franckess_fit"
+  
+[[menu.links]]
+  weight = 4
+  identifier = "email"
+  name = "Email"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-envelope\"></i>"
+  url = "mailto:franckess48@gmail.com"
 
 # [[menu.misc]]
 #   weight = 1

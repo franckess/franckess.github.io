@@ -1,8 +1,8 @@
 ---
-title: "How I Pass The Azure DP-100 Exam"
+title: "How I Passed The Azure DP-100 Exam"
 author: "Rene Essomba"
 date: '2020-06-17'
-slug: 'how-i-pass-azure-dp-100-exam'
+slug: 'how-i-passed-azure-dp-100-exam'
 tags:
 - Azure Machine Learning
 - Cloud Computing
@@ -83,13 +83,13 @@ Here are some key concepts to know prior to sitting the exam:
 
 #### Programming Languages
 
-The bulk of the questions focus on Python programming. In other words, as a candidate sitting the exam, you must be comfortable seeing some `Python` codes _without any trace of sweat on your forehead_.
+The bulk of the questions focus on Python programming. In other words, as a candidate sitting the exam, you must be comfortable seeing some `Python` codes _without any trace of sweat on your forehead_ (to my R-fellows, you know who you are!). There might be some `R` codes being thrown at you in the exam. 
 
-There might be some `R` codes being thrown at you too. Either way, be comfortable reading/writing codes in both languages.
+**Either way, be comfortable reading/writing codes in both languages**.
 
 # Exam Preparation
 
-There aren't as many resources available as for Azure AZ-900 Exam (example!). However, here are the ones that I used to prepare for this exam:
+There aren't that many centralized resources available to prepare for this exam. However, here are the ones that I used during my preparation time:
 
 #### YouTube Links
 
@@ -106,7 +106,7 @@ There aren't as many resources available as for Azure AZ-900 Exam (example!). Ho
 
 #### Documentation
 
-* Quickstarts, end-to-end tutorials, and how-tos on the [official documentation site for Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/).
+* End-to-end tutorials, and how-tos on the [official documentation site for Azure Machine Learning service](https://docs.microsoft.com/en-us/azure/machine-learning/service/).
 * [Python SDK reference](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py)
 * Azure ML Data Prep SDK [overview](https://aka.ms/data-prep-sdk), [Python SDK reference](https://aka.ms/aml-data-prep-apiref), and [tutorials and how-tos](https://aka.ms/aml-data-prep-notebooks).
 * [Pluralsight MS Azure](https://www.pluralsight.com/paths/microsoft-azure-data-scientist-dp-100) consists of 25 lectures teaching how Azure services work together to enable various parts of the Machine Learning workflow.
@@ -122,4 +122,4 @@ Visit following repos to see projects contributed by Azure Machine Learning user
 * [Fashion MNIST with Azure Machine Learning SDK](https://github.com/amynic/azureml-sdk-fashion)
 * [UMass Amherst Student Samples](https://github.com/katiehouse3/microsoft-azure-ml-notebooks) - A number of end-to-end machine learning notebooks, including machine translation, image classification, and customer churn.
 
-_I hope you found this blogpost valuable. Feel free to reach out if have any feedback or need assistance :-)_
+_I hope you found this blogpost useful. Please drop a comment/remark below :-)_
