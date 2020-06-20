@@ -21,8 +21,8 @@ I am an Analytics Professional working for one of the largest life insurance com
 [](#Education "Education")Education
 --------------------------------------
 
-**Georgia Institute of Technology**  
-_MSc in Analytics (Jan 2019 - Present)_
+**Georgia Institute of Technology (USA)**  
+_MSc in Analytics (Current)_
 
 *   `Simulation and Modeling for Engineering and Science`
 *   `Data and Visual Analytics`
@@ -32,19 +32,29 @@ _MSc in Analytics (Jan 2019 - Present)_
 *   `Bayesian Statistics`
 *   `Business Analytics`
 
-**University of Cape Town**  
-_MSc in Mathematical Statistics (Mar 2013 - Feb 2015)_
+**University of Cape Town (South Africa)**  
+_MSc in Mathematical Statistics (Dissertation only)_
 
-*   `Functional Data Analysis`
+*   Topic: `An investigation into Functional Linear Regression Modeling` [PDF version](https://open.uct.ac.za/bitstream/item/16664/thesis_sci_2015_essomba_rene_franck.pdf?sequence=1)
 
-**University of Cape Town**  
-_BCom in Actuarial Science (Feb 2009 - Dec 2012)_
+**University of Cape Town (South Africa)**  
+_BCom in Actuarial Science_
 
 *   `Actuarial Science`
 *   `Statistics`
 *   `Mathematics`
 *   `Finance & Accounting`
 *   `Economics`
+*   `Computer Science`
+
+**University of Yaounde 1 (Cameroon)**  
+_BSc (Hons) in Mathematics_
+
+*   `Algebra`
+*   `Calculus`
+*   `Mathematical Statistics & Probability`
+*   `Differential Geometry`
+*   `Programming and Algorithm Design`
 
 * * *
 
@@ -63,6 +73,9 @@ _Data Scientist_
 
 **Kantar TNS**  
 _Junior Data Scientist_
+
+**Effective Intelligence**  
+_Statistical Data Analyst_
 
 * * *
 
