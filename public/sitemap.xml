@@ -3,22 +3,77 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/categories/azure-blob-storage/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/cloud-computing/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/docker/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/docker/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/flask/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/python/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/python-flask/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/software-engineering/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/uploading-files-azure-blob-flask/</loc>
+    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/azure-machine-learning/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/azure-machine-learning/</loc>
-    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
-    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/cloud-computing/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -38,11 +93,6 @@
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/how-i-passed-azure-dp-100-exam/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
@@ -54,16 +104,6 @@
   
   <url>
     <loc>/categories/mlops/</loc>
-    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
   </url>
   

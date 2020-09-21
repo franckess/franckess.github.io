@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.70.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Rene Essomba">
+<meta name="keywords" content=", Rene Essomba, actuarial, data, science, fitness, christian">
+<meta name="description" content="I recently started my Fall semester with Georgia Institute of Technology doing the course ISYE6748: Applied Analytics Practicum. The objective of this course is to give an opportunity to students to apply their data science knowledge to solve real business problems. You can find out more about the course via this link.
+The project that I chose to work on is to help a US-based startup with extraction and categorization of information from PDF documents.">
+
+
+<meta property="og:description" content="I recently started my Fall semester with Georgia Institute of Technology doing the course ISYE6748: Applied Analytics Practicum. The objective of this course is to give an opportunity to students to apply their data science knowledge to solve real business problems. You can find out more about the course via this link.
+The project that I chose to work on is to help a US-based startup with extraction and categorization of information from PDF documents.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Uploading files to Azure Blob using Flask">
+<meta name="twitter:title" content="Uploading files to Azure Blob using Flask">
+<meta property="og:url" content="/post/uploading-files-azure-blob-flask/">
+<meta property="twitter:url" content="/post/uploading-files-azure-blob-flask/">
+<meta property="og:site_name" content="Franckess Blog">
+<meta property="og:description" content="I recently started my Fall semester with Georgia Institute of Technology doing the course ISYE6748: Applied Analytics Practicum. The objective of this course is to give an opportunity to students to apply their data science knowledge to solve real business problems. You can find out more about the course via this link.
+The project that I chose to work on is to help a US-based startup with extraction and categorization of information from PDF documents.">
+<meta name="twitter:description" content="I recently started my Fall semester with Georgia Institute of Technology doing the course ISYE6748: Applied Analytics Practicum. The objective of this course is to give an opportunity to students to apply their data science knowledge to solve real business problems. You can find out more about the course via this link.
+The project that I chose to work on is to help a US-based startup with extraction and categorization of information from PDF documents.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2020-09-20T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2020-09-20T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Python">
+    
+      <meta property="article:section" content="Flask">
+    
+      <meta property="article:section" content="Azure Blob Storage">
+    
+      <meta property="article:section" content="Docker">
+    
+  
+  
+    
+      <meta property="article:tag" content="Python Flask">
+    
+      <meta property="article:tag" content="Docker">
+    
+      <meta property="article:tag" content="Cloud Computing">
+    
+      <meta property="article:tag" content="Software Engineering">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@franckess">
+
+
+  <meta name="twitter:creator" content="@franckess">
+
+
+
+
+
+
+  <meta property="og:image" content="https://cdn.pixabay.com/photo/2017/02/07/02/16/cloud-2044823_1280.png">
+  <meta property="twitter:image" content="https://cdn.pixabay.com/photo/2017/02/07/02/16/cloud-2044823_1280.png">
+
+
+  <meta property="og:image" content="https://i.morioh.com/2019/11/27/228da7ef4c53.jpg">
+  <meta property="twitter:image" content="https://i.morioh.com/2019/11/27/228da7ef4c53.jpg">
+
+
+
+
+  <meta property="og:image" content="https://www.gravatar.com/avatar/e7881f91cb8ab1308d269875632c69e8?s=640">
+  <meta property="twitter:image" content="https://www.gravatar.com/avatar/e7881f91cb8ab1308d269875632c69e8?s=640">
+
+
+    <title>Uploading files to Azure Blob using Flask</title>
+
+    <link rel="icon" href="images/pixel_me.png">
+    
+
+    
+
+    <link rel="canonical" href="/post/uploading-files-azure-blob-flask/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    
+    
+
+    
+      
+    
+    
+    <script type="text/javascript" id="MathJax-script" async
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   MathJax.Hub.Config({
+     showProcessingMessages: false,
+     messageStyle: "none",
+     tex2jax: {
+       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+       processEscapes: true
+     },
+     TeX: {
+       MultLineWidth: "100%",
+       equationNumbers: { autoNumber: "AMS" }
+     },
+     "HTML-CSS": { fonts: ["Latin-Modern"] }
+   });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+    var TEX = MathJax.InputJax.TeX;
+    var PREFILTER = TEX.prefilterMath;
+    TEX.Augment({
+      prefilterMath: function (math,displaymode,script) {
+        if (!displaymode) {math = "\\small{"+math+"}"}
+        return PREFILTER.call(TEX,math,displaymode,script);
+      }
+    });
+  });
+</script>
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/">Franckess Blog</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/e7881f91cb8ab1308d269875632c69e8?s=110" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Rene Essomba</h4>
+        
+          <h5 class="sidebar-profile-bio">Actuarial Science | Data Science | Research &amp; Innovation | Fitness | Christian</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/post">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-file-text-o" title='Blog'></i>
+      
+      <span class="sidebar-button-desc">Blog</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-align-left"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-user", title='About'></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/franckess">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github" title='Github'></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/reneessomba/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin" title='LinkedIn'></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://instagram.com/franckess_fit">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-instagram" title='Instagram'></i>
+      
+      <span class="sidebar-button-desc">Instagram</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="mailto:franckess48@gmail.com" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">Email</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-left
+              "
+       style="background-image:url('https://i.morioh.com/2019/11/27/228da7ef4c53.jpg')"
+       data-behavior="4">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Uploading files to Azure Blob using Flask
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-09-20T00:00:00Z">
+        
+  September 20, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="/categories/python">Python</a>, 
+    
+      <a class="category-link" href="/categories/flask">Flask</a>, 
+    
+      <a class="category-link" href="/categories/azure-blob-storage">Azure Blob Storage</a>, 
+    
+      <a class="category-link" href="/categories/docker">Docker</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">Photo obtained from Andres Gallo</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+
+
+<p>I recently started my Fall semester with Georgia Institute of Technology doing the course <strong>ISYE6748: Applied Analytics Practicum</strong>. The objective of this course is to give an opportunity to students to apply their data science knowledge to solve real business problems. You can find out more about the course via this <a href="https://www.analytics.gatech.edu/career-services/applied-analytics-practicum">link</a>.</p>
+<p>The project that I chose to work on is to help a US-based startup with extraction and categorization of information from PDF documents. The proposed workflow involves storing existing/new the files on <a href="https://azure.microsoft.com/en-au/services/storage/blobs/">Azure Blob Storage</a> and run an NLP algorithm to output relevant sections of the documents for categorization.</p>
+<p>The purpose of this blogpost is to explain how I designed and created a simple Flask webapp to upload files to Azure Blob Storage using Docker.</p>
+<div id="building-the-app-locally" class="section level2">
+<h2>Building the App Locally</h2>
+<p>There are essentially six files that should be created for this app to work. The file-tree below shows those files as well as their locations in the poject folder:</p>
+<pre><code>Flask_Web_App/
+┣ templates/
+┃ ┗ index.html
+┣ Dockerfile
+┣ config.py
+┣ flask_app.py
+┣ requirements.txt
+┗ run_waitress_server.py</code></pre>
+<div id="index.html" class="section level3">
+<h3>Index.html</h3>
+<p>This is where you design the app that will be seen by the users.</p>
+<pre class="html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;76x76&quot; href=&quot;static/img/apple-icon.png&quot;&gt;
+  &lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;../assets/img/favicon.png&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;
+  &lt;title&gt;MyApp&lt;/title&gt;
+  &lt;meta content=&#39;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no&#39; name=&#39;viewport&#39; /&gt;
+  &lt;!-- Fonts and icons --&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css?family=Montserrat:400,700,200&quot; rel=&quot;stylesheet&quot; /&gt;
+  &lt;link href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;!-- CSS Files --&gt;
+  &lt;link href=&quot;static/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot; /&gt;
+  &lt;link href=&quot;static/css/paper-dashboard.css?v=2.0.1&quot; rel=&quot;stylesheet&quot; /&gt;
+  &lt;!-- CSS --&gt;
+  &lt;link href=&quot;static/demo/demo.css&quot; rel=&quot;stylesheet&quot; /&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css&quot;&gt;
+  &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+      &lt;h2&gt; &lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;hr&gt;
+  &lt;div class=&quot;container&quot;&gt;
+  &lt;h2&gt;Flask App&lt;/h2&gt;
+  &lt;div class=&quot;card&quot; style=&quot;width:400px&quot;&gt;
+    &lt;div class=&quot;card-body &quot;&gt;
+      &lt;form action=&quot;/upload&quot; method=&quot;POST&quot; enctype=&quot;multipart/form-data&quot;&gt;
+      &lt;p class=&quot;card-text&quot;&gt;Choose a file to upload it to Azure Blob Storage&lt;/p&gt;
+        &lt;input type=&quot;file&quot; name=&quot;file&quot; value=&quot;file&quot;&gt;
+        &lt;hr&gt;
+      &lt;input type=&quot;submit&quot; name=&quot;upload&quot; value=&quot;Upload&quot; class=&quot;btn btn-success&quot;&gt;
+      &lt;/form&gt;
+      {{msg}}
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;br&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>The above produces the following interface:</p>
+<p><img src="Flaskapp.png" /></p>
+</div>
+<div id="dockerfile" class="section level3">
+<h3>Dockerfile</h3>
+<p>This where you create you build your container for the app that will be later deployed as webapp to Azure.</p>
+<pre><code>FROM python:3.6
+
+RUN mkdir /code
+WORKDIR /code
+ADD . /code/
+RUN pip install --upgrade pip &amp;&amp; \
+    pip install -r requirements.txt &amp;&amp; \
+    pip install Werkzeug
+
+EXPOSE 8080
+CMD [&quot;python&quot;, &quot;/code/run_waitress_server.py&quot;]</code></pre>
+</div>
+<div id="config.py" class="section level3">
+<h3>Config.py</h3>
+<p>Not necessary for your app to work but it is important to follow software engineering best practices. Within that file, I defined the app settings, see below:</p>
+<pre class="python"><code>ACCOUNT_NAME = &quot;XXXXXXXXXXXXXXXXXXXX&quot;
+ACCOUNT_KEY = &quot;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;
+CONNECTION_STRING = &quot;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;
+CONTAINER = &quot;XXXXXX&quot;
+ALLOWED_EXTENSIONS = set([&#39;txt&#39;, &#39;pdf&#39;, &#39;png&#39;, &#39;jpg&#39;, &#39;jpeg&#39;])
+MAX_CONTENT_LENGTH = 20 * 1024 * 1024    # 20 Mb limit</code></pre>
+</div>
+<div id="flask_app.py" class="section level3">
+<h3>flask_app.py</h3>
+<p>This is the back-end of the <code>MyApp</code> allowing any user to click on the <strong>Choose file</strong> button and then click on the <strong>Upload</strong> button.</p>
+<pre class="python"><code>from flask import Flask, request, render_template, redirect, url_for
+from werkzeug.utils import secure_filename
+from azure.storage.blob import BlobServiceClient
+import os
+
+app = Flask(__name__, static_folder=&#39;static&#39;, static_url_path=&#39;&#39;)
+
+app.config.from_pyfile(&#39;config.py&#39;)
+account = app.config[&#39;ACCOUNT_NAME&#39;]   # Azure account name
+key = app.config[&#39;ACCOUNT_KEY&#39;]      # Azure Storage account access key  
+connect_str = app.config[&#39;CONNECTION_STRING&#39;]
+container = app.config[&#39;CONTAINER&#39;] # Container name
+allowed_ext = app.config[&#39;ALLOWED_EXTENSIONS&#39;] # List of accepted extensions
+max_length = app.config[&#39;MAX_CONTENT_LENGTH&#39;] # Maximum size of the uploaded file
+
+blob_service_client = BlobServiceClient.from_connection_string(connect_str)
+
+def allowed_file(filename):
+    return &#39;.&#39; in filename and \
+           filename.rsplit(&#39;.&#39;, 1)[1] in allowed_ext
+
+@app.route(&#39;/upload&#39;,methods=[&#39;POST&#39;])
+def upload():
+    if request.method == &#39;POST&#39;:
+        img = request.files[&#39;file&#39;]
+        if img and allowed_file(img.filename):
+            filename = secure_filename(img.filename)
+            img.save(filename)
+            blob_client = blob_service_client.get_blob_client(container = container, blob = filename)
+            with open(filename, &quot;rb&quot;) as data:
+                try:
+                    blob_client.upload_blob(data, overwrite=True)
+                    msg = &quot;Upload Done ! &quot;
+                except:
+                    pass
+            os.remove(filename)
+    return render_template(&quot;index.html&quot;, msg=msg)
+
+if __name__ == &quot;__main__&quot;:
+    app.run()</code></pre>
+<p>Whilst crucial aspects such as security and QA testing were ignored, the Flask app shown above works as intended.</p>
+<ul>
+<li>The <code>allowed_file</code> function checks whether the file being uploaded has one of the extensions listed in <code>ALLOWED_EXTENSIONS</code>.<br />
+</li>
+<li>The <code>upload</code> function calls upon <code>@app.route</code> when a <code>POST</code> request is sent to the browser then uploads it to an Azure Blob Storage. The <code>filename</code> object holds the submitted file object which <code>Flask</code> imports from <code>Werkzeug</code>.</li>
+</ul>
+</div>
+<div id="requirements.txt" class="section level3">
+<h3>requirements.txt</h3>
+<p>This is the file used for specifying what python packages are required to run the project you are looking at.</p>
+<pre><code>azure-common==1.1.24
+azure-nspkg==3.0.2
+azure-storage==0.36.0
+azure-storage-blob==12.5.0
+Flask==1.1.2
+pylint==2.6.0
+waitress==1.0.1</code></pre>
+</div>
+<div id="run_waitress_server.py" class="section level3">
+<h3>run_waitress_server.py</h3>
+<p>This file is used to specify how the app will be served:</p>
+<ul>
+<li><code>host</code> to specify the hostname or IP address</li>
+<li><code>port</code> to specify port number to listen</li>
+</ul>
+<pre class="python"><code>import os
+from waitress import serve
+from flask_app import app
+
+serve(app, host=&#39;0.0.0.0&#39;, port=8080)</code></pre>
+<p>All you have to do is to run your newly created Flask App locally</p>
+<pre><code>$ export FLASK_APP=flask_app.py
+$ flask run</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Run and test your running Docker container:</li>
+</ol>
+<pre><code></code></pre>
+</div>
+</div>
+<div id="deploying-the-app-on-azure" class="section level2">
+<h2>Deploying the App on Azure</h2>
+<p>Now that the Flask App has been tested locally, it is time to deploy that on Azure. I will assume that you have a Microsoft Azure account and the following items set up:</p>
+<ul>
+<li>Azure Subscription</li>
+<li>Azure Resource Group</li>
+<li><a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest">Azure CLI</a></li>
+<li>Docker</li>
+</ul>
+<div id="azure-container-registry-acr" class="section level3">
+<h3>Azure Container Registry (ACR)</h3>
+<p><a href="https://azure.microsoft.com/en-au/services/container-registry/">Azure Container Registry</a> is an essential piece for the deployment of the FLask App as it is the private Docker registry in Azure for all artifacts. The Docker image of our web app will be hosted on ACR.</p>
+<p>Using a command line interface, we create a container registry:</p>
+<pre><code>az acr create --name &lt;Container_Registry_Name&gt; --resource-group &lt;Resource_Group_Name&gt; --sku basic --admin-enabled true</code></pre>
+</div>
+<div id="build-docker-image-and-save-to-acr" class="section level3">
+<h3>Build Docker Image and Save to ACR</h3>
+<p>Using a CLI, we build the Docker image and push it to Azure Container Registry:</p>
+<pre><code>az acr build --registry &lt;Container_Registry_Name&gt; --resource-group &lt;Resource_Group_Name&gt; --image &lt;Image_Name&gt; .</code></pre>
+</div>
+<div id="deploy-web-app-from-acr" class="section level3">
+<h3>Deploy Web App from ACR</h3>
+<p>Before we deploy our Flask app as web app, we need to create an actual instance of your web application (i.e. <a href="https://docs.microsoft.com/en-us/azure/app-service/app-service-plan-manage">App Service Plan</a>).
+What does that entail? It entails creating a virtual machine that will run the Flask App Docker image.</p>
+<p>Using CLI, we create the app service plan:</p>
+<pre><code>az appservice plan create -g &lt;Resource_Group_Name&gt; --name &lt;App_Service_Plan_Name&gt; --location australiaest --is-linux --sku F1</code></pre>
+<p>Finally, we create the <a href="https://docs.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-create">Azure web app</a> from the docker container in the Container Registry:</p>
+<pre><code>az webapp create -g CensusApp -p &lt;App_Service_Plan_Name&gt; -n &lt;Flask_Web_App_Name&gt; -i &lt;Container_Registry_Name&gt;.azurecr.io/&lt;Image_Name&gt;:latest</code></pre>
+<p>To view your new website, go to your new web app resource and select <code>Browse</code>….and voila!!</p>
+<p><em>I hope you found this blogpost useful. Please drop a comment/remark below :-)</em></p>
+</div>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="/tags/python-flask/">Python Flask</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/docker/">Docker</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/cloud-computing/">Cloud Computing</a>
+
+  <a class="tag tag--primary tag--small" href="/tags/software-engineering/">Software Engineering</a>
+
+                  </div>
+                
+              
+            
+            <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/post/how-i-passed-azure-dp-100-exam/" data-tooltip="How I Passed The Azure DP-100 Exam">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+            
+              
+                <div id="disqus_thread"></div>
+<script>
+
+(function() { 
+var d = document, s = d.createElement('script');
+s.src = 'https://https-franckess-com.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://github.com/franckess">Rene Essomba</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/post/how-i-passed-azure-dp-100-exam/" data-tooltip="How I Passed The Azure DP-100 Exam">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://www.gravatar.com/avatar/e7881f91cb8ab1308d269875632c69e8?s=110" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Rene Essomba</h4>
+    
+      <div id="about-card-bio">Actuarial Science | Data Science | Research &amp; Innovation | Fitness | Christian</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Analytics Manager
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Sydney, AU
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('/images/photo3.jpeg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = '\/post\/uploading-files-azure-blob-flask\/';
+          
+            this.page.identifier = '\/post\/uploading-files-azure-blob-flask\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'https-franckess-com';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+
+    
+  </body>
+</html>
+
