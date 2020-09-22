@@ -25,7 +25,7 @@ editor_options:
 output:
   blogdown::html_page
 comments: yes
-readingtime: '6'
+readingtime: '3'
 coverCaption: Photo obtained from Andres Gallo
 ---
 
@@ -195,13 +195,12 @@ from waitress import serve
 from flask_app import app
 
 serve(app, host=&#39;0.0.0.0&#39;, port=8080)</code></pre>
-<p>All you have to do is to run your newly created Flask App locally</p>
-<pre><code>$ export FLASK_APP=flask_app.py
-$ flask run</code></pre>
+<p>All you have to do is to build the Docker image and run it locally:</p>
+<pre><code>$ docker build -f Dockerfile -t MyApp:latest .</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Run and test your running Docker container:</li>
+<li>Test your Docker container running your newly created Flask App:</li>
 </ol>
-<pre><code></code></pre>
+<pre><code>$ docker run -p 8080:8080 -e AZURE_STORAGE_KEY=&lt;ACCOUNT_KEY&gt; --rm MyApp</code></pre>
 </div>
 </div>
 <div id="deploying-the-app-on-azure" class="section level2">
