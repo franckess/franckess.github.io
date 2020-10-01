@@ -266,7 +266,7 @@ az appservice plan create -g <Resource_Group_Name> --name <App_Service_Plan_Name
 ```
 Finally, we create the [Azure web app](https://docs.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) from the docker container in the Container Registry:
 ```
-az webapp create -g CensusApp -p <App_Service_Plan_Name> -n <Flask_Web_App_Name> -i <Container_Registry_Name>.azurecr.io/<Image_Name>:latest
+az webapp create -g <Resource_Group_Name> -p <App_Service_Plan_Name> -n <Flask_Web_App_Name> -i <Container_Registry_Name>.azurecr.io/<Image_Name>:latest
 ```
 
 To view your new website, go to your new web app resource and select `Browse`....and voila!!
