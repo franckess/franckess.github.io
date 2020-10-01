@@ -230,7 +230,7 @@ What does that entail? It entails creating a virtual machine that will run the F
 <p>Using CLI, we create the app service plan:</p>
 <pre><code>az appservice plan create -g &lt;Resource_Group_Name&gt; --name &lt;App_Service_Plan_Name&gt; --location australiaest --is-linux --sku F1</code></pre>
 <p>Finally, we create the <a href="https://docs.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-create">Azure web app</a> from the docker container in the Container Registry:</p>
-<pre><code>az webapp create -g CensusApp -p &lt;App_Service_Plan_Name&gt; -n &lt;Flask_Web_App_Name&gt; -i &lt;Container_Registry_Name&gt;.azurecr.io/&lt;Image_Name&gt;:latest</code></pre>
+<pre><code>az webapp create -g &lt;Resource_Group_Name&gt; -p &lt;App_Service_Plan_Name&gt; -n &lt;Flask_Web_App_Name&gt; -i &lt;Container_Registry_Name&gt;.azurecr.io/&lt;Image_Name&gt;:latest</code></pre>
 <p>To view your new website, go to your new web app resource and select <code>Browse</code>….and voila!!</p>
 <p><em>I hope you found this blogpost useful. Please drop a comment/remark below :-)</em></p>
 </div>
