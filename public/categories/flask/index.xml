@@ -2,21 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Flask on Franckess Blog</title>
-    <link>/categories/flask/</link>
+    <link>https://franckess.com/categories/flask/</link>
     <description>Recent content in Flask on Franckess Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Sep 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/categories/flask/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 20 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://franckess.com/categories/flask/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Uploading files to Azure</title>
-      <link>/post/uploading-files-azure-blob-flask/</link>
+      <link>https://franckess.com/post/uploading-files-azure-blob-flask/</link>
       <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/uploading-files-azure-blob-flask/</guid>
+      <guid>https://franckess.com/post/uploading-files-azure-blob-flask/</guid>
       <description>I recently started my Fall semester with Georgia Institute of Technology doing the course ISYE6748: Applied Analytics Practicum. The objective of this course is to give an opportunity to students to apply their data science knowledge to solve real business problems. You can find out more about the course via this link.
 The project that I chose to work on is to help a US-based startup with extraction and categorization of information from PDF documents.</description>
     </item>

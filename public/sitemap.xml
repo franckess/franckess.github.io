@@ -1,115 +1,80 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
-    <loc>/categories/azure-blob-storage/</loc>
+    <loc>https://franckess.com/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://franckess.com/tags/new-resolution/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://franckess.com/post/new-year-is-for-new-beginnings/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://franckess.com/post/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://franckess.com/tags/self-thought/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://franckess.com/tags/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://franckess.com/categories/azure-blob-storage/</loc>
     <lastmod>2020-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
+  </url><url>
+    <loc>https://franckess.com/categories/</loc>
     <lastmod>2020-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/cloud-computing/</loc>
+  </url><url>
+    <loc>https://franckess.com/tags/cloud-computing/</loc>
     <lastmod>2020-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/docker/</loc>
+  </url><url>
+    <loc>https://franckess.com/tags/docker/</loc>
     <lastmod>2020-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/docker/</loc>
+  </url><url>
+    <loc>https://franckess.com/categories/docker/</loc>
     <lastmod>2020-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/flask/</loc>
+  </url><url>
+    <loc>https://franckess.com/categories/flask/</loc>
     <lastmod>2020-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
+  </url><url>
+    <loc>https://franckess.com/categories/python/</loc>
     <lastmod>2020-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
+  </url><url>
+    <loc>https://franckess.com/tags/python-flask/</loc>
     <lastmod>2020-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/python/</loc>
+  </url><url>
+    <loc>https://franckess.com/tags/software-engineering/</loc>
     <lastmod>2020-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/python-flask/</loc>
+  </url><url>
+    <loc>https://franckess.com/post/uploading-files-azure-blob-flask/</loc>
     <lastmod>2020-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/software-engineering/</loc>
-    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/uploading-files-azure-blob-flask/</loc>
-    <lastmod>2020-09-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/azure-machine-learning/</loc>
+  </url><url>
+    <loc>https://franckess.com/tags/azure-machine-learning/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/azure-machine-learning/</loc>
+  </url><url>
+    <loc>https://franckess.com/categories/azure-machine-learning/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/cloud-computing/</loc>
+  </url><url>
+    <loc>https://franckess.com/categories/cloud-computing/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/data-science/</loc>
+  </url><url>
+    <loc>https://franckess.com/tags/data-science/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/data-science/</loc>
+  </url><url>
+    <loc>https://franckess.com/categories/data-science/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/how-i-passed-azure-dp-100-exam/</loc>
+  </url><url>
+    <loc>https://franckess.com/post/how-i-passed-azure-dp-100-exam/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/mlops/</loc>
+  </url><url>
+    <loc>https://franckess.com/tags/mlops/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/mlops/</loc>
+  </url><url>
+    <loc>https://franckess.com/categories/mlops/</loc>
     <lastmod>2020-06-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/about/</loc>
+  </url><url>
+    <loc>https://franckess.com/about/</loc>
     <priority>0</priority>
   </url>
-  
 </urlset>

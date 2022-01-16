@@ -40,8 +40,8 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
 
 [author]
   name = "Rene Essomba"
-  bio = "Actuarial Science | Data Science | Research & Innovation | Fitness | Christian"
-  job = "Analytics Manager"
+  bio = "Decision Science | Data Engineering | ML Engineering | Research & Innovation"
+  job = "Data/ML Engineer"
   location = "Sydney, AU"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
   gravatarEmail = "franckess48@gmail.com"
@@ -139,7 +139,7 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
   # dateFormat = "2 January 2006"
 
   # Global keywords configuration. Following keywords will be add to every pages
-  keywords = ["Rene Essomba", "actuarial", "data", "science", "fitness", "christian"]
+  keywords = ["Rene Essomba", "machine-learning", "data", "science", "engineering"]
 
   # Syntax highlighter, possible choice between: "highlight.js" (recommanded) and "prism.js" (experimental)
   # You can comment it to disable syntax highlighting

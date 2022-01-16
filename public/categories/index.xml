@@ -2,84 +2,80 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Franckess Blog</title>
-    <link>/categories/</link>
+    <link>https://franckess.com/categories/</link>
     <description>Recent content in Categories on Franckess Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Sep 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 20 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://franckess.com/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Azure Blob Storage</title>
-      <link>/categories/azure-blob-storage/</link>
+      <link>https://franckess.com/categories/azure-blob-storage/</link>
       <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/azure-blob-storage/</guid>
+      <guid>https://franckess.com/categories/azure-blob-storage/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>/categories/docker/</link>
+      <link>https://franckess.com/categories/docker/</link>
       <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/docker/</guid>
+      <guid>https://franckess.com/categories/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Flask</title>
-      <link>/categories/flask/</link>
+      <link>https://franckess.com/categories/flask/</link>
       <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/flask/</guid>
+      <guid>https://franckess.com/categories/flask/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>/categories/python/</link>
+      <link>https://franckess.com/categories/python/</link>
       <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/python/</guid>
+      <guid>https://franckess.com/categories/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Azure Machine Learning</title>
-      <link>/categories/azure-machine-learning/</link>
+      <link>https://franckess.com/categories/azure-machine-learning/</link>
       <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/azure-machine-learning/</guid>
+      <guid>https://franckess.com/categories/azure-machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cloud Computing</title>
-      <link>/categories/cloud-computing/</link>
+      <link>https://franckess.com/categories/cloud-computing/</link>
       <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/cloud-computing/</guid>
+      <guid>https://franckess.com/categories/cloud-computing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data Science</title>
-      <link>/categories/data-science/</link>
+      <link>https://franckess.com/categories/data-science/</link>
       <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/data-science/</guid>
+      <guid>https://franckess.com/categories/data-science/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MLOps</title>
-      <link>/categories/mlops/</link>
+      <link>https://franckess.com/categories/mlops/</link>
       <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/mlops/</guid>
+      <guid>https://franckess.com/categories/mlops/</guid>
       <description></description>
     </item>
     

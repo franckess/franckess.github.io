@@ -1,0 +1,50 @@
+---
+title: "New Year Is For New Beginnings"
+author: "Rene Essomba"
+date: '2022-01-12'
+slug: "new-year-is-for-new-beginnings"
+tags:
+  - Self thought
+  - New Resolution
+coverImage: https://images.pexels.com/photos/6027785/pexels-photo-6027785.jpeg?cs=srgb&dl=pexels-anna-tarazevich-6027785.jpg&fm=jpg
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: true
+thumbnailImagePosition : left
+thumbnailImage: https://images.pexels.com/photos/3697811/pexels-photo-3697811.jpeg?cs=srgb&dl=pexels-matheus-bertelli-3697811.jpg&fm=jpg
+editor_options: 
+  chunk_output_type: console
+output:
+  blogdown::html_page
+comments: yes
+readingtime: '1'
+coverCaption: Photo obtained from Anna Tarazevich on Pexels.com
+hidedate: true
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+The new year is upon us and it's really exciting because at this time everyone goes through a little of reflection and write down their goals to achieve during or before the end of 2022. However, only a small percentage of people stick with their goals till the end and the rest seems to focus hard over the first 30 to 60 days before falling back into those old habits. 
+It is therefore very important to know  **what is your why when we set our goals** as they are going to guide us, keep us motivated each day and help us to sustain positive momentum through the ups and downs of life. More importantly, to establish a routine (or process) to support our journey
+
+Over the last couple of years, I have put heaps of efforts into transitioning myself from actuarial/analytics professional into a data/ML engineer. The year 2021 was the cornerstone to this change as I landed my first engineering consulting role with [Slalom Build](https://www.slalombuild.com/) the engineering arm of [Slalom](https://www.slalom.com/) the global consulting firm that focuses on strategy, technology, and transformation. 
+Building on that momentum from last year, my main focus for this year is to grow my **ENGINEERING** skills (and everything that it entails). The best way to do that is: **_practice, practice and practice_**.
+
+How would I execute my plans? Here is list of actions, to become part of my routines, that I intend to apply to get me going:
+
+1. **Blogging** doing this on a consistent basis will help with generating contents and being creative;
+2. **Learning** certifications, university degree, presentations;
+3. **Delivering** using my newly acquired knowledge to deliver at work or personal projects.
+
+Lastly, on the 1st February it is Chinese New Year and this year is the year of the Tiger. This is the time to be competitive, courageous and ambitious...so be just that ;)
+
+<p align="center">
+![Tiger](https://askastrology.com/wp-content/uploads/2018/10/HOR_108_Tiger.jpg)
+</p>
+
+
+

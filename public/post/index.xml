@@ -2,31 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Franckess Blog</title>
-    <link>/post/</link>
+    <link>https://franckess.com/post/</link>
     <description>Recent content in Posts on Franckess Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Sep 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Wed, 12 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://franckess.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New Year Is For New Beginnings</title>
+      <link>https://franckess.com/post/new-year-is-for-new-beginnings/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://franckess.com/post/new-year-is-for-new-beginnings/</guid>
+      <description>The new year is upon us and it’s really exciting because at this time everyone goes through a little of reflection and write down their goals to achieve during or before the end of 2022. However, only a small percentage of people stick with their goals till the end and the rest seems to focus hard over the first 30 to 60 days before falling back into those old habits.</description>
+    </item>
     
     <item>
       <title>Uploading files to Azure</title>
-      <link>/post/uploading-files-azure-blob-flask/</link>
+      <link>https://franckess.com/post/uploading-files-azure-blob-flask/</link>
       <pubDate>Sun, 20 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/uploading-files-azure-blob-flask/</guid>
+      <guid>https://franckess.com/post/uploading-files-azure-blob-flask/</guid>
       <description>I recently started my Fall semester with Georgia Institute of Technology doing the course ISYE6748: Applied Analytics Practicum. The objective of this course is to give an opportunity to students to apply their data science knowledge to solve real business problems. You can find out more about the course via this link.
 The project that I chose to work on is to help a US-based startup with extraction and categorization of information from PDF documents.</description>
     </item>
     
     <item>
       <title>How I Passed The Azure DP-100 Exam</title>
-      <link>/post/how-i-passed-azure-dp-100-exam/</link>
+      <link>https://franckess.com/post/how-i-passed-azure-dp-100-exam/</link>
       <pubDate>Wed, 17 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/how-i-passed-azure-dp-100-exam/</guid>
+      <guid>https://franckess.com/post/how-i-passed-azure-dp-100-exam/</guid>
       <description>Like many people, I kicked off this year with a long list of resolutions. My list includes items like learning how to do a backflip, but that’s a story for another time! One of my top three goals, and the one has come up regularly over the last couple of years, was to make an active effort learning cloud computing. Luckily, my current employer has chosen Microsoft Azure as their cloud platform, hence allowing me to focus on it.</description>
     </item>
     
