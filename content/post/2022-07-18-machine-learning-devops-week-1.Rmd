@@ -1,0 +1,268 @@
+---
+title: Machine Learning DevOps (Week 1)
+author: Rene Essomba
+date: '2022-07-18'
+slug: 'machine-learning-devops-week-1'
+categories:
+  - Git
+  - Python
+  - MLOps
+tags:
+  - Machine Learning
+  - DevOps
+  - Udacity
+coverImage: https://images.pexels.com/photos/2832071/pexels-photo-2832071.jpeg?cs=srgb&dl=pexels-felix-mittermeier-2832071.jpg&fm=jpg
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: true
+thumbnailImagePosition : left
+thumbnailImage: https://images.pexels.com/photos/6272248/pexels-photo-6272248.jpeg?cs=srgb&dl=pexels-enric-cruz-l%C3%B3pez-6272248.jpg&fm=jpg
+editor_options: 
+  chunk_output_type: console
+output:
+  blogdown::html_page
+comments: yes
+readingtime: '1'
+coverCaption: Photo obtained from Felix Mittermeier on Pexels.com
+hidedate: true
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+Being in the field of data science and machine learning, you might quickly realize that things are moving pretty fast. For that matter, adopting the "student for life" mindset is what would help you to stay up-to-date and but also to expand your toolbox. 
+For myself, I tend lean towards structured programs allowing me to combine theory and practice into one offering. 
+
+I registered to do the [Machine Learning DevOps nanodegree programme](https://www.udacity.com/course/machine-learning-dev-ops-engineer-nanodegree--nd0821) from Udacity which focuses on building DevOps skills required to automate the various aspects and stages of machine learning model building and monitoring. 
+**This blog serves as a summary/note from the lecture videos of this part of the course.**
+
+The first part of the program introduces to the following concepts:
+
+* Coding best practices
+* Working with others using Version Control
+* Production Ready Code
+
+## Coding Best Practices
+
+In this lesson, I learned the five key principles to coding best practices:
+
+* **Refactoring** - the process of writing code that improves its maintainability, speed, and readability without changing its functionality.
+* **Modular** - the logical partition of software into smaller programs for the purpose of improved maintainability, speed, and readability.
+* **Efficiency & Optimization** - a way of writing code to be more efficient while using the resources optimally where resources could be memory, CPU, time, files, connections, databases, etc. 
+* **Documentation** - written material or illustration that explains computer software.
+* **Linting** - the automated checking of your source code for programmatic, syntactic, or stylistic errors. [Source]
+* **PEP8** - a document providing guidelines and best practices for writing Python code.
+
+#### Refactoring
+
+The term *refactoring* means restructuring your code to improve your code internally while keeping its external functionality. In other words, it means cleaning and modularizing your code after you've got it working.
+
+For example, say I want to replace *space* with *_* from column names of a data frame. One might implement it as follows: 
+```{python.reticulate=FALSE}
+labels = list(df.columns)
+labels[0] = labels[0].replace(' ', '_')
+labels[1] = labels[1].replace(' ', '_')
+labels[2] = labels[2].replace(' ', '_')
+labels[3] = labels[3].replace(' ', '_')
+labels[5] = labels[5].replace(' ', '_')
+labels[6] = labels[6].replace(' ', '_')
+```
+
+After *refactoring*, the result looks like this:
+```{python.reticulate=FALSE}
+df.columns = [col.replace(' ', '_') for col in df.columns]
+```
+
+#### Modular
+
+The term *modular* refers to abstracting out code into functions to make it less repetitive as well as to improve readability with descriptive function names. Although the edited code can become more readable when you abstract out logic into functions, it is possible to over-engineer this and have way too many modules.
+
+#### Efficiency & Optimization
+
+Optimizing code to be more efficient can mean making it:
+
+* Execute faster
+* Take up less space in memory/storage
+
+When performing lots of different transformations on large amounts of data, this can make orders of magnitudes of difference in performance.
+
+Let's consider a scenario where we would like to calculate our total cost after including GST (say 15%), one might implement it this way:
+```{python.reticulate=FALSE}
+total_price = 0
+for cost in item_costs:
+    if cost < 25:
+        total_price += cost * 1.15  # add cost after tax
+```
+A more efficient and optimized solution may look like this:
+
+```{python.reticulate=FALSE}
+total_price = np.sum(gift_costs[np.where(item_costs < 25)]) * 1.15
+```
+
+#### Documentation
+
+The aim here is to introduce additional text or illustrated information that comes with or is embedded in the code of software. *Documentation* is helpful for clarifying complex parts of code, making your code easier to navigate, and quickly conveying how and why different components of your program are used.
+
+The following items fall under documentation:
+* **Inline comments**: line level
+* **Docstrings** module and function level
+* **Project documentation**
+
+#### Auto-PEP8 & Linting
+
+There are two ways to automate clean code with Python: `pylint` and `autopep8`. Running them is as easy as:
+
+* `pylint script_name.py` which will provide meaningful information such as a score out of 10 to rate your code.
+* `autopep8 --in-place --aggressive --aggressive script_name.py` which will automatically clean up your code.
+
+## Working with others using Version Control
+
+In this lesson, Git and GitHub were the main focus as well as being able to perform the following tasks:
+
+* Creating branches
+* Using Git for different workflows
+* Performing code reviews.
+
+Key commands:
+
+* `git add` - add any new or modified files to the index
+* `git commit -m` - a new commit containing the current contents of the index and the given log message describing the changes
+* `git push` - frequently used to move local code to the cloud version of the repository
+* `git checkout -b` - create and move to a new branch
+* `git checkout` - used to move across branches that have already been created
+* `git branch` - lists all branches
+* `git status` - lists the status of the files that are updated or new
+* `git pull` - pull updates from Github (remote) to local
+* `git branch -d` deletes local branch
+
+## Production Ready Code
+
+Being able to contribute to your team's production codebase requires an understanding for software coding skills. For that matter, the specifics needed to move code into a production setting can be summarized using the items below:
+
+* **Handling errors**
+* **Writing tests and logs**
+* **Model drift**
+* **Non/automated retraining**
+
+#### Handling Errors
+
+In Python, exceptions can be handled using a `try` statement. The critical operation which can raise an exception is placed inside the `try` clause. The code that handles the exceptions is written in the `except` clause.
+
+When these exceptions occur, the Python interpreter stops the current process and passes it to the calling process until it is handled. If not handled, the program will crash.
+
+Here is an example:
+```{python.reticulate=FALSE}
+def divide_vals(numerator, denominator):
+    '''
+    Args:
+        numerator: (float) numerator of fraction
+        denominator: (float) denominator of fraction
+
+    Returns:
+        fraction_val: (float) numerator/denominator
+    '''
+    try:
+        fraction_val = numerator/denominator
+        return fraction_val
+    except ZeroDivisionError:
+        return "denominator cannot be zero"
+```
+In this scenario, we've implemented a function which returns the result of a division operation. However, we need to handle cases where the denominator could be equal to zero and the way we handle is with the `ZeroDivisionError` exception.
+```{python.reticulate=FALSE}
+print(divide_vals(10,5)) # 2
+print(divide_vals(10,0)) # denominator cannot be zero
+```
+
+#### Testing
+
+Testing is essential before deployment as they help catching errors and faulty events before being pushed to production. However, testing data science work is a much harder task as the errors are not always easily detectable or features have been encoded wrongly, etc. Concepts such as *Test-driven development (TDD)*, *Unit test* or *Integration testing* could help data scientists to write tests for tasks/functions. To learn more about integration testing and how integration tests relate to unit tests, see [Integration Testing](https://www.fullstackpython.com/integration-testing.html). That article contains other very useful links as well.
+
+One of the quickest way to run unit tests on your code is to use the Python library `pytest`. The following items are necessary to run it:
+
+* Create a test file starting `test_`
+* Define unit test functions that start with `test_`
+* Enter `pytest` into your terminal in the directory of your test file and it detects these tests for you.
+
+Here is an example, say we implemented a function that calculates the Euclidean distance between two vectors. The code file is `./utils/eucl_distance.py`.
+```{python.reticulate=FALSE}
+import numpy as np
+
+def sqrt_sum(a, b):
+    return np.sqrt(np.sum((a - b) ** 2))
+```
+
+In order to test it, we create our test file `./utils/test_eucl_distance.py` as follows:
+```{python.reticulate=FALSE}
+import unittest
+import numpy as np
+from utils.eucl_distance import sqrt_sum
+
+def test_eucl_distance(self):
+  x = np.array([0.3, 0.3, 0.4])
+  y = np.array([1, 2, 0])
+  expected_res = 1.881488
+  res = sqrt_sum(x, y)
+  assertAlmostEqual(res, expected_res, places=5)
+```
+Then we just run `pytest` in the relevant folder.
+
+Test-driven development for data science is relatively new and is experiencing a lot of experimentation and breakthroughs. More about it by exploring the following resources:
+
+* [Data Science TDD](https://www.linkedin.com/pulse/data-science-test-driven-development-sam-savage/)
+* [TDD Essentials for Good Data Science: Here's Why](https://medium.com/uk-hydrographic-office/test-driven-development-is-essential-for-good-data-science-heres-why-db7975a03a44)
+* [Testing Your Code](https://docs.python-guide.org/writing/tests/)
+
+#### Logging
+
+Logging allows you to understand the chain of events leading to a specific outcome while running your code. Below is a an example of logging in your Python code:
+```{python.reticulate=FALSE}
+'''
+Logging example
+
+author: Rene
+date: July, 2022
+'''
+
+import logging
+import pandas as pd
+
+logging.basicConfig(
+  filename='./results.log',
+  level=logging.INFO,
+  filemode='w',
+  format='%(name)s - %(levelname)s - %(message)s'
+)
+
+def read_data(file_path):
+  '''
+    Args:
+        file_path: (str)
+    Return:
+        df (Dataframe)
+    '''
+  try:
+    logging.info("Reading path to file: {}".format(file_path)))
+    df = pd.read_csv(file_path)
+    m, k = df.shape
+    logging.info("There are {} rows and {} columns in our dataframe".format(m, k))
+    return df
+  except FileNotFoundError:
+    logging.error("Unable to find file location")
+    
+if __name__ == '__main__':
+  df = read_data("../data/nba_players.csv")
+
+```
+
+#### Model Drift
+
+Quite often, the model deployed would behave differently from the model trained on. This might be due to a change of input data over time. This shift means that our models may not perform as well over time as they did when the model was originally launched.
+
+If you have a model that needs to be updated really frequently, without needing major feature or model changes, then **automated retraining** could be a great way to update. The example above where this type of training might be used is with a fraud model.
+
+Alternatively, other models might require new features or new architectures, which are likely best handled by having a human go in and make changes. These changes to a model likely happen less frequently, as considered with a search engine ranking model. In these cases, **non-automated retraining** is likely the best option. Automating these large changes is likely not worth the additional effort.
+
+Next stop, practice...practice...practice :)

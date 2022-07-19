@@ -1,0 +1,239 @@
+---
+title: Machine Learning DevOps (Week 1)
+author: Rene Essomba
+date: '2022-07-18'
+slug: 'machine-learning-devops-week-1'
+categories:
+  - Git
+  - Python
+  - MLOps
+tags:
+  - Machine Learning
+  - DevOps
+  - Udacity
+coverImage: https://images.pexels.com/photos/2832071/pexels-photo-2832071.jpeg?cs=srgb&dl=pexels-felix-mittermeier-2832071.jpg&fm=jpg
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: true
+thumbnailImagePosition : left
+thumbnailImage: https://images.pexels.com/photos/6272248/pexels-photo-6272248.jpeg?cs=srgb&dl=pexels-enric-cruz-l%C3%B3pez-6272248.jpg&fm=jpg
+editor_options: 
+  chunk_output_type: console
+output:
+  blogdown::html_page
+comments: yes
+readingtime: '1'
+coverCaption: Photo obtained from Felix Mittermeier on Pexels.com
+hidedate: true
+draft: false
+---
+
+
+
+<p>Being in the field of data science and machine learning, you might quickly realize that things are moving pretty fast. For that matter, adopting the “student for life” mindset is what would help you to stay up-to-date and but also to expand your toolbox.
+For myself, I tend lean towards structured programs allowing me to combine theory and practice into one offering.</p>
+<p>I registered to do the <a href="https://www.udacity.com/course/machine-learning-dev-ops-engineer-nanodegree--nd0821">Machine Learning DevOps nanodegree programme</a> from Udacity which focuses on building DevOps skills required to automate the various aspects and stages of machine learning model building and monitoring.
+<strong>This blog serves as a summary/note from the lecture videos of this part of the course.</strong></p>
+<p>The first part of the program introduces to the following concepts:</p>
+<ul>
+<li>Coding best practices</li>
+<li>Working with others using Version Control</li>
+<li>Production Ready Code</li>
+</ul>
+<div id="coding-best-practices" class="section level2">
+<h2>Coding Best Practices</h2>
+<p>In this lesson, I learned the five key principles to coding best practices:</p>
+<ul>
+<li><strong>Refactoring</strong> - the process of writing code that improves its maintainability, speed, and readability without changing its functionality.</li>
+<li><strong>Modular</strong> - the logical partition of software into smaller programs for the purpose of improved maintainability, speed, and readability.</li>
+<li><strong>Efficiency &amp; Optimization</strong> - a way of writing code to be more efficient while using the resources optimally where resources could be memory, CPU, time, files, connections, databases, etc.</li>
+<li><strong>Documentation</strong> - written material or illustration that explains computer software.</li>
+<li><strong>Linting</strong> - the automated checking of your source code for programmatic, syntactic, or stylistic errors. [Source]</li>
+<li><strong>PEP8</strong> - a document providing guidelines and best practices for writing Python code.</li>
+</ul>
+<div id="refactoring" class="section level4">
+<h4>Refactoring</h4>
+<p>The term <em>refactoring</em> means restructuring your code to improve your code internally while keeping its external functionality. In other words, it means cleaning and modularizing your code after you’ve got it working.</p>
+<p>For example, say I want to replace <em>space</em> with *_* from column names of a data frame. One might implement it as follows:</p>
+<pre python.reticulate="FALSE"><code>labels = list(df.columns)
+labels[0] = labels[0].replace(&#39; &#39;, &#39;_&#39;)
+labels[1] = labels[1].replace(&#39; &#39;, &#39;_&#39;)
+labels[2] = labels[2].replace(&#39; &#39;, &#39;_&#39;)
+labels[3] = labels[3].replace(&#39; &#39;, &#39;_&#39;)
+labels[5] = labels[5].replace(&#39; &#39;, &#39;_&#39;)
+labels[6] = labels[6].replace(&#39; &#39;, &#39;_&#39;)</code></pre>
+<p>After <em>refactoring</em>, the result looks like this:</p>
+<pre python.reticulate="FALSE"><code>df.columns = [col.replace(&#39; &#39;, &#39;_&#39;) for col in df.columns]</code></pre>
+</div>
+<div id="modular" class="section level4">
+<h4>Modular</h4>
+<p>The term <em>modular</em> refers to abstracting out code into functions to make it less repetitive as well as to improve readability with descriptive function names. Although the edited code can become more readable when you abstract out logic into functions, it is possible to over-engineer this and have way too many modules.</p>
+</div>
+<div id="efficiency-optimization" class="section level4">
+<h4>Efficiency &amp; Optimization</h4>
+<p>Optimizing code to be more efficient can mean making it:</p>
+<ul>
+<li>Execute faster</li>
+<li>Take up less space in memory/storage</li>
+</ul>
+<p>When performing lots of different transformations on large amounts of data, this can make orders of magnitudes of difference in performance.</p>
+<p>Let’s consider a scenario where we would like to calculate our total cost after including GST (say 15%), one might implement it this way:</p>
+<pre python.reticulate="FALSE"><code>total_price = 0
+for cost in item_costs:
+    if cost &lt; 25:
+        total_price += cost * 1.15  # add cost after tax</code></pre>
+<p>A more efficient and optimized solution may look like this:</p>
+<pre python.reticulate="FALSE"><code>total_price = np.sum(gift_costs[np.where(item_costs &lt; 25)]) * 1.15</code></pre>
+</div>
+<div id="documentation" class="section level4">
+<h4>Documentation</h4>
+<p>The aim here is to introduce additional text or illustrated information that comes with or is embedded in the code of software. <em>Documentation</em> is helpful for clarifying complex parts of code, making your code easier to navigate, and quickly conveying how and why different components of your program are used.</p>
+<p>The following items fall under documentation:
+* <strong>Inline comments</strong>: line level
+* <strong>Docstrings</strong> module and function level
+* <strong>Project documentation</strong></p>
+</div>
+<div id="auto-pep8-linting" class="section level4">
+<h4>Auto-PEP8 &amp; Linting</h4>
+<p>There are two ways to automate clean code with Python: <code>pylint</code> and <code>autopep8</code>. Running them is as easy as:</p>
+<ul>
+<li><code>pylint script_name.py</code> which will provide meaningful information such as a score out of 10 to rate your code.</li>
+<li><code>autopep8 --in-place --aggressive --aggressive script_name.py</code> which will automatically clean up your code.</li>
+</ul>
+</div>
+</div>
+<div id="working-with-others-using-version-control" class="section level2">
+<h2>Working with others using Version Control</h2>
+<p>In this lesson, Git and GitHub were the main focus as well as being able to perform the following tasks:</p>
+<ul>
+<li>Creating branches</li>
+<li>Using Git for different workflows</li>
+<li>Performing code reviews.</li>
+</ul>
+<p>Key commands:</p>
+<ul>
+<li><code>git add</code> - add any new or modified files to the index</li>
+<li><code>git commit -m</code> - a new commit containing the current contents of the index and the given log message describing the changes</li>
+<li><code>git push</code> - frequently used to move local code to the cloud version of the repository</li>
+<li><code>git checkout -b</code> - create and move to a new branch</li>
+<li><code>git checkout</code> - used to move across branches that have already been created</li>
+<li><code>git branch</code> - lists all branches</li>
+<li><code>git status</code> - lists the status of the files that are updated or new</li>
+<li><code>git pull</code> - pull updates from Github (remote) to local</li>
+<li><code>git branch -d</code> deletes local branch</li>
+</ul>
+</div>
+<div id="production-ready-code" class="section level2">
+<h2>Production Ready Code</h2>
+<p>Being able to contribute to your team’s production codebase requires an understanding for software coding skills. For that matter, the specifics needed to move code into a production setting can be summarized using the items below:</p>
+<ul>
+<li><strong>Handling errors</strong></li>
+<li><strong>Writing tests and logs</strong></li>
+<li><strong>Model drift</strong></li>
+<li><strong>Non/automated retraining</strong></li>
+</ul>
+<div id="handling-errors" class="section level4">
+<h4>Handling Errors</h4>
+<p>In Python, exceptions can be handled using a <code>try</code> statement. The critical operation which can raise an exception is placed inside the <code>try</code> clause. The code that handles the exceptions is written in the <code>except</code> clause.</p>
+<p>When these exceptions occur, the Python interpreter stops the current process and passes it to the calling process until it is handled. If not handled, the program will crash.</p>
+<p>Here is an example:</p>
+<pre python.reticulate="FALSE"><code>def divide_vals(numerator, denominator):
+    &#39;&#39;&#39;
+    Args:
+        numerator: (float) numerator of fraction
+        denominator: (float) denominator of fraction
+
+    Returns:
+        fraction_val: (float) numerator/denominator
+    &#39;&#39;&#39;
+    try:
+        fraction_val = numerator/denominator
+        return fraction_val
+    except ZeroDivisionError:
+        return &quot;denominator cannot be zero&quot;</code></pre>
+<p>In this scenario, we’ve implemented a function which returns the result of a division operation. However, we need to handle cases where the denominator could be equal to zero and the way we handle is with the <code>ZeroDivisionError</code> exception.</p>
+<pre python.reticulate="FALSE"><code>print(divide_vals(10,5)) # 2
+print(divide_vals(10,0)) # denominator cannot be zero</code></pre>
+</div>
+<div id="testing" class="section level4">
+<h4>Testing</h4>
+<p>Testing is essential before deployment as they help catching errors and faulty events before being pushed to production. However, testing data science work is a much harder task as the errors are not always easily detectable or features have been encoded wrongly, etc. Concepts such as <em>Test-driven development (TDD)</em>, <em>Unit test</em> or <em>Integration testing</em> could help data scientists to write tests for tasks/functions. To learn more about integration testing and how integration tests relate to unit tests, see <a href="https://www.fullstackpython.com/integration-testing.html">Integration Testing</a>. That article contains other very useful links as well.</p>
+<p>One of the quickest way to run unit tests on your code is to use the Python library <code>pytest</code>. The following items are necessary to run it:</p>
+<ul>
+<li>Create a test file starting <code>test_</code></li>
+<li>Define unit test functions that start with <code>test_</code></li>
+<li>Enter <code>pytest</code> into your terminal in the directory of your test file and it detects these tests for you.</li>
+</ul>
+<p>Here is an example, say we implemented a function that calculates the Euclidean distance between two vectors. The code file is <code>./utils/eucl_distance.py</code>.</p>
+<pre python.reticulate="FALSE"><code>import numpy as np
+
+def sqrt_sum(a, b):
+    return np.sqrt(np.sum((a - b) ** 2))</code></pre>
+<p>In order to test it, we create our test file <code>./utils/test_eucl_distance.py</code> as follows:</p>
+<pre python.reticulate="FALSE"><code>import unittest
+import numpy as np
+from utils.eucl_distance import sqrt_sum
+
+def test_eucl_distance(self):
+  x = np.array([0.3, 0.3, 0.4])
+  y = np.array([1, 2, 0])
+  expected_res = 1.881488
+  res = sqrt_sum(x, y)
+  assertAlmostEqual(res, expected_res, places=5)</code></pre>
+<p>Then we just run <code>pytest</code> in the relevant folder.</p>
+<p>Test-driven development for data science is relatively new and is experiencing a lot of experimentation and breakthroughs. More about it by exploring the following resources:</p>
+<ul>
+<li><a href="https://www.linkedin.com/pulse/data-science-test-driven-development-sam-savage/">Data Science TDD</a></li>
+<li><a href="https://medium.com/uk-hydrographic-office/test-driven-development-is-essential-for-good-data-science-heres-why-db7975a03a44">TDD Essentials for Good Data Science: Here’s Why</a></li>
+<li><a href="https://docs.python-guide.org/writing/tests/">Testing Your Code</a></li>
+</ul>
+</div>
+<div id="logging" class="section level4">
+<h4>Logging</h4>
+<p>Logging allows you to understand the chain of events leading to a specific outcome while running your code. Below is a an example of logging in your Python code:</p>
+<pre python.reticulate="FALSE"><code>&#39;&#39;&#39;
+Logging example
+
+author: Rene
+date: July, 2022
+&#39;&#39;&#39;
+
+import logging
+import pandas as pd
+
+logging.basicConfig(
+  filename=&#39;./results.log&#39;,
+  level=logging.INFO,
+  filemode=&#39;w&#39;,
+  format=&#39;%(name)s - %(levelname)s - %(message)s&#39;
+)
+
+def read_data(file_path):
+  &#39;&#39;&#39;
+    Args:
+        file_path: (str)
+    Return:
+        df (Dataframe)
+    &#39;&#39;&#39;
+  try:
+    logging.info(&quot;Reading path to file: {}&quot;.format(file_path)))
+    df = pd.read_csv(file_path)
+    m, k = df.shape
+    logging.info(&quot;There are {} rows and {} columns in our dataframe&quot;.format(m, k))
+    return df
+  except FileNotFoundError:
+    logging.error(&quot;Unable to find file location&quot;)
+    
+if __name__ == &#39;__main__&#39;:
+  df = read_data(&quot;../data/nba_players.csv&quot;)
+</code></pre>
+</div>
+<div id="model-drift" class="section level4">
+<h4>Model Drift</h4>
+<p>Quite often, the model deployed would behave differently from the model trained on. This might be due to a change of input data over time. This shift means that our models may not perform as well over time as they did when the model was originally launched.</p>
+<p>If you have a model that needs to be updated really frequently, without needing major feature or model changes, then <strong>automated retraining</strong> could be a great way to update. The example above where this type of training might be used is with a fraud model.</p>
+<p>Alternatively, other models might require new features or new architectures, which are likely best handled by having a human go in and make changes. These changes to a model likely happen less frequently, as considered with a search engine ranking model. In these cases, <strong>non-automated retraining</strong> is likely the best option. Automating these large changes is likely not worth the additional effort.</p>
+<p>Next stop, practice…practice…practice :)</p>
+</div>
+</div>

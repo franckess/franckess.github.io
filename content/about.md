@@ -6,7 +6,7 @@ Who Is Rene?
 [](#Intro "Intro")Intro
 -----------------------
 
-I am an Analytics Professional working for one of the largest life insurance company in Australia. I have acquired work experience across different verticals including consulting, marketing, insurance (both life and general) and academia.
+I am a Data Scientist with many years of experience in areas such as Banking, Insurance, Retail in Australia & South Africa. 
 
 **Top Skills**
 
@@ -14,6 +14,7 @@ I am an Analytics Professional working for one of the largest life insurance com
 *   `Actuarial Science`
 *   `Cloud Computing`
 *   `Machine Learning & Deep Learning`
+*   `Data Engineering`
 *   `Data Visualisation`
 *   `Mentoring`
 *   `Teaching`
@@ -24,7 +25,7 @@ I am an Analytics Professional working for one of the largest life insurance com
 --------------------------------------
 
 **Georgia Institute of Technology (USA)**  
-_MSc in Analytics (Current)_
+_MSc in Analytics_
 
 *   `Simulation and Modeling for Engineering and Science`
 *   `Data and Visual Analytics`
@@ -63,8 +64,11 @@ _BSc (Hons) in Mathematics_
 [](#Professional "Professional")Professional
 --------------------------------------------
 
+**Slalom Build**  
+_Senior Data/ML Engineer (Oct 2022 - Present)_
+
 **TAL Australia**  
-_Analytics Manager (May 2018 - Present)_
+_Analytics Manager (May 2018 - Sept 2020)_
 
 
 **Taylor Fry Consulting**  
@@ -86,4 +90,4 @@ _Statistical Data Analyst_
 
 Programing & Scripting Language: `Scala` | `Python` | `R` |`Bash` |  
 Big Data Application: `Hadoop` | `Spark` |  
-Database: `MySql` | `MongoDB` |
+Cloud: `AWS` | `GCP` | `Azure`
