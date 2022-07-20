@@ -58,7 +58,7 @@ In this lesson, I learned the five key principles to coding best practices:
 
 #### Refactoring
 
-The term *refactoring* means restructuring your code to improve your code internally while keeping its external functionality. In other words, it means cleaning and modularizing your code after you've got it working.
+The term *refactoring* means restructuring your code to improve it internally while keeping its external functionality. In other words, it means cleaning and modularizing your code after you've got it working.
 
 For example, say I want to replace *space* with *_* from column names of a data frame. One might implement it as follows: 
 ```{python.reticulate=FALSE}
@@ -89,7 +89,7 @@ Optimizing code to be more efficient can mean making it:
 
 When performing lots of different transformations on large amounts of data, this can make orders of magnitudes of difference in performance.
 
-Let's consider a scenario where we would like to calculate our total cost after including GST (say 15%), one might implement it this way:
+Let's consider a scenario where I would like to calculate our total cost after including GST (say 15%), one might implement it this way:
 ```{python.reticulate=FALSE}
 total_price = 0
 for cost in item_costs:
@@ -107,6 +107,7 @@ total_price = np.sum(gift_costs[np.where(item_costs < 25)]) * 1.15
 The aim here is to introduce additional text or illustrated information that comes with or is embedded in the code of software. *Documentation* is helpful for clarifying complex parts of code, making your code easier to navigate, and quickly conveying how and why different components of your program are used.
 
 The following items fall under documentation:
+
 * **Inline comments**: line level
 * **Docstrings** module and function level
 * **Project documentation**
@@ -170,7 +171,7 @@ def divide_vals(numerator, denominator):
     except ZeroDivisionError:
         return "denominator cannot be zero"
 ```
-In this scenario, we've implemented a function which returns the result of a division operation. However, we need to handle cases where the denominator could be equal to zero and the way we handle is with the `ZeroDivisionError` exception.
+In this scenario, I implemented a function which returns the result of a division operation. However, we need to handle cases where the denominator could be equal to zero and the way I handle is with the `ZeroDivisionError` exception.
 ```{python.reticulate=FALSE}
 print(divide_vals(10,5)) # 2
 print(divide_vals(10,0)) # denominator cannot be zero
@@ -186,7 +187,7 @@ One of the quickest way to run unit tests on your code is to use the Python libr
 * Define unit test functions that start with `test_`
 * Enter `pytest` into your terminal in the directory of your test file and it detects these tests for you.
 
-Here is an example, say we implemented a function that calculates the Euclidean distance between two vectors. The code file is `./utils/eucl_distance.py`.
+Here is an example, say I created a function that calculates the Euclidean distance between two vectors. The code file is `./utils/eucl_distance.py`.
 ```{python.reticulate=FALSE}
 import numpy as np
 
@@ -194,7 +195,7 @@ def sqrt_sum(a, b):
     return np.sqrt(np.sum((a - b) ** 2))
 ```
 
-In order to test it, we create our test file `./utils/test_eucl_distance.py` as follows:
+In order to test it, I created our test file `./utils/test_eucl_distance.py` as follows:
 ```{python.reticulate=FALSE}
 import unittest
 import numpy as np
@@ -207,7 +208,7 @@ def test_eucl_distance(self):
   res = sqrt_sum(x, y)
   assertAlmostEqual(res, expected_res, places=5)
 ```
-Then we just run `pytest` in the relevant folder.
+All I need is to run `pytest` in the relevant folder (i.e. `./utils/`)
 
 Test-driven development for data science is relatively new and is experiencing a lot of experimentation and breakthroughs. More about it by exploring the following resources:
 
