@@ -1,0 +1,352 @@
+---
+title: Data Modeling with Neo4j
+author: Rene Essomba
+date: '2022-07-22'
+slug: data-modeling-with-neo4j
+categories:
+  - Graph Database
+  - Docker
+  - Postgres
+tags:
+  - Data Engineerirng
+  - Graph Database
+  - Docker
+coverImage: https://images.pexels.com/photos/276487/pexels-photo-276487.jpeg?cs=srgb&dl=pexels-pixabay-276487.jpg&fm=jpg
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: true
+thumbnailImagePosition : left
+thumbnailImage: https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?cs=srgb&dl=pexels-pixabay-163064.jpg&fm=jpg
+editor_options: 
+  chunk_output_type: console
+output:
+  blogdown::html_page
+comments: yes
+readingtime: '5'
+coverCaption: Photo obtained from Pixabay on Pexels.com
+hidedate: true
+draft: false
+---
+
+
+
+<p>This blogpost is about gaining an intuition for converting tabular-structured data into graph-structured data and store into Graph database for further analysis.</p>
+<div id="key-concepts" class="section level2">
+<h2>Key Concepts</h2>
+<div id="definitions" class="section level3">
+<h3>Definitions</h3>
+<p>A <strong>Graph Database</strong> uses graph structures with nodes, edges and properties to represent and store data. The graph relates data items to a collection of nodes and edges, where edges represent relationships between nodes. Graph database is designed to treat the relationships between data as important as the data itself.</p>
+<p>The structure of a graph database relies on some key elements:</p>
+<ul>
+<li><em>Nodes</em> — are the entities in graph. They can hold any number of attributes (key/value pairs) called properties. Nodes can be tagged labels, representing their different roles. Node labels also serve to attach metadata to certain nodes.</li>
+<li><em>Relationships</em> — provide directed, named, semantically-relevant connections between two node entities. A relationship always has a type, a direction, a start node and an end node. Relationships can also have properties.</li>
+<li><em>Properties</em> — Represent the named data values. Applicable to both nodes and relationships.</li>
+</ul>
+<p><strong>Neo4j (Network Exploration and Optimization 4 Java)</strong> is a graph database management system. Based on its official documentation, Neo4j is:</p>
+<blockquote>
+<p>a native graph data store built from the ground up to leverage not only data but also data relationships. Unlike other types of databases, Neo4j connects data as it’s stored, enabling queries never before imagined, at speeds never thought possible.</p>
+</blockquote>
+</div>
+<div id="data-modeling-to-graph" class="section level3">
+<h3>Data Modeling to Graph</h3>
+<p>As a general approach, review the Neo4j’s <a href="https://neo4j.com/developer/relational-to-graph-modeling/">guide</a> on converting relational databases to graph databases. A condensed summary of the steps to help you with the transformation of a relational diagram are listed below.</p>
+<ul>
+<li><strong>Table to Node Label</strong> - each entity table in the relational model becomes a label on nodes in the graph model.</li>
+<li><strong>Row to Node</strong> - each row in a relational entity table becomes a node in the graph.</li>
+<li><strong>Columns (excluding Join keys) to Node Property</strong> - columns (fields) on the relational tables become node properties in the graph.</li>
+</ul>
+Visually, it will look like this:
+<p>
+</p>
+<strong>RELATIONAL DATABASE</strong>
+<p align="center">
+<img src="https://dist.neo4j.com/wp-content/uploads/relational_model.jpg" />
+</p>
+<p align="center" width="10" height="7">
+<img src="https://static.thenounproject.com/png/1136516-200.png" />
+</p>
+<strong>GRAPH DATABASE</strong>
+<p align="center" width="10" height="7">
+<img src="https://dist.neo4j.com/wp-content/uploads/relational_graph_model.jpg" />
+</p>
+</div>
+<div id="cypher-query-language" class="section level3">
+<h3>Cypher Query Language</h3>
+<p>Neo4j provides a powerful declarative language known as <strong>Cypher</strong>. Cypher is human-friendly query language that uses ASCII-Art, where <code>(nodes)-[:ARE_CONNECTED_TO]-&gt;(otherNodes)</code>, to represent visual graph patterns for finding or updating data in a graph database. For example:</p>
+<p align="center" width="10" height="7">
+<img src="https://dist.neo4j.com/wp-content/uploads/sample-cypher.png" />
+</p>
+<p>Neo4j users use Cypher to construct expressive and efficient queries to do any kind of create, read, update, or delete (CRUD) on their graph, and Cypher is the primary interface for Neo4j.</p>
+</div>
+</div>
+<div id="practical-application" class="section level2">
+<h2>Practical application</h2>
+<p>Now that we have explored some key concepts, let’s dive into an actual example. For that matter, I am going to use the <a href="https://gist.github.com/maruthiprithivi/072b526e20fe16a29f98db07f569861d">NorthWind dataset</a> which provides information about a product sale system on - <em>suppliers, products, order details, categories, employees, &amp; orders</em>. The entity-relationship diagram is shown below:</p>
+<p align="center" width="10" height="7">
+<img src="https://github.com/franckess/neo4j_practice/blob/master/figs/northwind_data_diagram.png?raw=true" />
+</p>
+<p>Applying the principles explored above, I can convert this set of tabular data into graph data as follows:</p>
+<p><strong>Rows to Nodes</strong></p>
+<ul>
+<li>Each row on our <code>Orders</code> table becomes a node in our graph with <code>Order</code> as the label.</li>
+<li>Each row on our <code>Products</code> table becomes a node with <code>Product</code> as the label.</li>
+<li>Each row on our <code>Suppliers</code> table becomes a node with <code>Supplier</code> as the label.</li>
+<li>Each row on our <code>Categories</code> table becomes a node with <code>Category</code> as the label.</li>
+<li>Each row on our <code>Employees</code> table becomes a node with <code>Employee</code> as the label.</li>
+</ul>
+<p><strong>Joins to relationships</strong></p>
+<ul>
+<li>Join between <code>Suppliers</code> and <code>Products</code> becomes a relationship named <code>SUPPLIES</code> (where supplier supplies product).</li>
+<li>Join between <code>Products</code> and <code>Categories</code> becomes a relationship named <code>PART_OF</code> (where product is part of a category).</li>
+<li>Join between <code>Employees</code> and <code>Orders</code> becomes a relationship named <code>SOLD</code> (where employee sold an order).</li>
+<li>Join between <code>Employees</code> and itself (unary relationship) becomes a relationship named <code>REPORTS_TO</code> (where employees have a manager).</li>
+<li>Join with join table (<code>Order Details</code>) between <code>Orders</code> and <code>Products</code> becomes a relationship named <code>CONTAINS</code> with properties of <code>unitPrice</code>, <code>quantity</code>, and <code>discount</code> (where order contains a product).</li>
+</ul>
+<div id="technology-stack" class="section level3">
+<h3>Technology stack</h3>
+<p>Our entire technology can be summarised looking at this <code>YAML</code> file:</p>
+<pre class="yaml"><code>version: &#39;3.8&#39;
+services:
+  neo4j:
+    container_name: neo4j
+    image: neo4j:4.4.3-community
+    ports:
+      - 7888:7474
+      - 7999:7687
+    restart: unless-stopped
+    networks:
+      - db
+    environment:
+      - NEO4J_AUTH=neo4j/password
+    volumes:
+      - ./db/data:/data
+      - ./db/conf:/conf
+      - ./db/logs:/logs
+      - ./db/plugins:/plugins
+      - ./db/scripts:/var/lib/neo4j/scripts
+  pgdatabase:
+    container_name: db
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=northwind
+    volumes:
+      - ./scripts/northwind_postgres.sql:/docker-entrypoint-initdb.d/northwind_postgres.sql
+    ports:
+      - 5432:5432
+    networks:
+      - db
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=postgres
+      - PGADMIN_LISTEN_PORT=5050
+      - PGADMIN_CONFIG_SERVER_MODE=False
+    ports:
+      - 5050:5050
+
+networks:
+  db:
+    driver: bridge</code></pre>
+<p>Looking at the <em>Docker-Compose</em> <code>yaml</code> file, there are three different items needed to build my working environment:</p>
+<ul>
+<li><strong>Neo4j Docker Image</strong> which is a standard, ready-to-run pacakge of Neo4j. The neo4j container will be exposed via port <code>7999</code>.</li>
+<li><strong>Postgres Docker Image</strong> which is a data warehouse to generate and store the NorthWind dataset locally. The postgres container will be exposed via port <code>5432</code>.</li>
+<li><strong>PgAdmin Docker Image</strong> which is a standard graphical tool to query data from Postgres. The pgAdmin container will be exposed via port <code>5050</code>.</li>
+</ul>
+<p>Additionally, I will be using <a href="https://neo4j.com/download/">Neo4j Desktop</a> to run cypher queries on the newly created graph database using this connection URL <code>neo4j://localhost:7999</code>.</p>
+<p>Once all the applications have been installed, running Docker-Compose will do this</p>
+<pre class="bash"><code>&gt; docker-compose up
+...
+....Lots of messages....
+...
+Creating Neo4j ... done
+Creating pgadmin ... done
+Creating db      ... done
+...</code></pre>
+<p>When it comes to integrate Neo4j with other databases, the APOC library offers support including relational databases (via JDBC), MongoDB, Elastic, and Couchbase (Here is the <a href="https://neo4j.com/developer/relational-to-graph-import/">link</a> to find out more). It also has support for importing data from LDAP directories and executing queries against other Neo4j databases.</p>
+<p>For this use-case, I am importing the NorthWind dataset from postgres database straight into Neo4j. The syntax will look like this:</p>
+<pre class="sql"><code>CALL apoc.load.jdbc(&quot;jdbc:postgresql://pgdatabase/northwind?user=root&amp;password=root&quot;, &lt;table_name/query&gt;)</code></pre>
+</div>
+<div id="create-nodes-and-relationships" class="section level3">
+<h3>Create Nodes and Relationships</h3>
+<div id="create-nodes" class="section level4">
+<h4>Create Nodes</h4>
+<p><strong>Orders nodes</strong></p>
+<pre class="sql"><code>CALL apoc.load.jdbc(&quot;jdbc:postgresql://pgdatabase/northwind?user=root&amp;password=root&quot;, &quot;orders&quot;) YIELD row
+MERGE (order:Order {orderID: row.order_id}) 
+  ON CREATE SET order.shipName = row.ship_name;</code></pre>
+<blockquote>
+<p>Added 830 labels, created 830 nodes, set 1660 properties, completed after 1149 ms.</p>
+</blockquote>
+<p><strong>Products nodes</strong></p>
+<pre class="sql"><code>CALL apoc.load.jdbc(&quot;jdbc:postgresql://pgdatabase/northwind?user=root&amp;password=root&quot;, &quot;products&quot;) YIELD row
+MERGE (product:Product {productID: row.product_id}) 
+  ON CREATE SET product.productName = row.product_name, product.unitPrice = toFloat(row.unit_price);</code></pre>
+<blockquote>
+<p>Added 77 labels, created 77 nodes, set 231 properties, completed after 75 ms.</p>
+</blockquote>
+<p><strong>Suppliers nodes</strong></p>
+<pre class="sql"><code>CALL apoc.load.jdbc(&quot;jdbc:postgresql://pgdatabase/northwind?user=root&amp;password=root&quot;, &quot;suppliers&quot;) YIELD row
+MERGE (supplier:Supplier {supplierID: row.supplier_id}) 
+  ON CREATE SET supplier.companyName = row.company_name;</code></pre>
+<blockquote>
+<p>Added 29 labels, created 29 nodes, set 58 properties, completed after 30 ms.</p>
+</blockquote>
+<p><strong>Employees nodes</strong></p>
+<pre class="sql"><code>CALL apoc.load.jdbc(&quot;jdbc:postgresql://pgdatabase/northwind?user=root&amp;password=root&quot;, &quot;employees&quot;) YIELD row
+MERGE (e:Employee {employeeID:row.employee_id}) 
+  ON CREATE SET e.firstName = row.first_name, e.lastName = row.last_name, e.title = row.title;</code></pre>
+<blockquote>
+<p>Added 9 labels, created 9 nodes, set 36 properties, completed after 38 ms.</p>
+</blockquote>
+<p><strong>Categories nodes</strong></p>
+<pre class="sql"><code>CALL apoc.load.jdbc(&quot;jdbc:postgresql://pgdatabase/northwind?user=root&amp;password=root&quot;, &quot;categories&quot;) YIELD row
+MERGE (c:Category {categoryID: row.category_id}) 
+  ON CREATE SET c.categoryName = row.category_name, c.description = row.description;</code></pre>
+<blockquote>
+<p>Added 8 labels, created 8 nodes, set 24 properties, completed after 31 ms.</p>
+</blockquote>
+<p>To ensure the lookup of nodes is optimized, I created indexes for any node properties used in the lookups (often the id or another unique value).</p>
+<pre class="sql"><code>CREATE INDEX product_id FOR (p:Product) ON (p.productID);
+CREATE INDEX product_name FOR (p:Product) ON (p.productName);
+CREATE INDEX supplier_id FOR (s:Supplier) ON (s.supplierID);
+CREATE INDEX employee_id FOR (e:Employee) ON (e.employeeID);
+CREATE INDEX category_id FOR (c:Category) ON (c.categoryID);
+CREATE CONSTRAINT order_id ON (o:Order) ASSERT o.orderID IS UNIQUE;
+CALL db.awaitIndexes();</code></pre>
+</div>
+<div id="create-relationships" class="section level4">
+<h4>Create Relationships</h4>
+<p>I will focus on creating the following relationships</p>
+<p><strong>Create relationships between orders and products</strong></p>
+<pre class="sql"><code>CALL apoc.load.jdbc(&quot;jdbc:postgresql://pgdatabase/northwind?user=root&amp;password=root&quot;, &quot;order_details&quot;) YIELD row
+MATCH (order:Order {orderID: row.order_id})
+MATCH (product:Product {productID: row.product_id})
+MERGE (order)-[op:CONTAINS]-&gt;(product)
+  ON CREATE SET op.unitPrice = toFloat(row.unit_price), op.quantity = toFloat(row.quantity);</code></pre>
+<blockquote>
+<p>Set 4310 properties, created 2155 relationships, completed after 876 ms.</p>
+</blockquote>
+<p><strong>Create relationships between orders and employees</strong></p>
+<pre class="sql"><code>CALL apoc.load.jdbc(&quot;jdbc:postgresql://pgdatabase/northwind?user=root&amp;password=root&quot;, &quot;orders&quot;) YIELD row
+MATCH (order:Order {orderID: row.order_id})
+MATCH (employee:Employee {employeeID: row.employee_id})
+MERGE (employee)-[:SOLD]-&gt;(order);</code></pre>
+<blockquote>
+<p>Created 830 relationships, completed after 177 ms.</p>
+</blockquote>
+<p><strong>Create relationships between products and suppliers</strong></p>
+<pre class="sql"><code>CALL apoc.load.jdbc(&quot;jdbc:postgresql://pgdatabase/northwind?user=root&amp;password=root&quot;, &quot;products&quot;) YIELD row
+MATCH (product:Product {productID: row.product_id})
+MATCH (supplier:Supplier {supplierID: row.supplier_id})
+MERGE (supplier)-[:SUPPLIES]-&gt;(product);</code></pre>
+<blockquote>
+<p>Created 77 relationships, completed after 60 ms.</p>
+</blockquote>
+<p><strong>Create relationships between products and categories</strong></p>
+<pre class="sql"><code>CALL apoc.load.jdbc(&quot;jdbc:postgresql://pgdatabase/northwind?user=root&amp;password=root&quot;, &quot;products&quot;) YIELD row
+MATCH (product:Product {productID: row.product_id})
+MATCH (category:Category {categoryID: row.category_id})
+MERGE (product)-[:PART_OF]-&gt;(category);</code></pre>
+<blockquote>
+<p>Created 77 relationships, completed after 53 ms.</p>
+</blockquote>
+<p><strong>Create relationships between employees (reporting hierarchy)</strong></p>
+<pre class="sql"><code>CALL apoc.load.jdbc(&quot;jdbc:postgresql://pgdatabase/northwind?user=root&amp;password=root&quot;, &quot;employees&quot;) YIELD row
+MATCH (employee:Employee {employeeID: row.employee_id})
+MATCH (manager:Employee {employeeID: row.reports_to})
+MERGE (employee)-[:REPORTS_TO]-&gt;(manager);</code></pre>
+<blockquote>
+<p>Created 8 relationships, completed after 46 ms.</p>
+</blockquote>
+</div>
+</div>
+<div id="query-the-graph-database" class="section level3">
+<h3>Query the Graph Database</h3>
+<p>Now that I created my graph database, I can query it to answer a few business questions:</p>
+<ol style="list-style-type: decimal">
+<li>What are the top 5 most popular products?</li>
+<li>Who is the supplier and what is the category for the top product?</li>
+<li>Who are the top 3 Employees with the Highest Cross-Selling Count of the top product and Another Product?</li>
+</ol>
+<p><strong>What are the top 5 most popular products?</strong></p>
+<pre class="sql"><code>match (o:Order)-[:CONTAINS]-&gt;(p:Product)
+return p.productName as productName, count(o) as orders
+order by orders desc, productName asc
+limit 5</code></pre>
+<p>Answer</p>
+<table>
+<thead>
+<tr class="header">
+<th>productName</th>
+<th>orders</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“Raclette Courdavault”</td>
+<td>54</td>
+</tr>
+<tr class="even">
+<td>“Camembert Pierrot”</td>
+<td>51</td>
+</tr>
+<tr class="odd">
+<td>“Gorgonzola Telino”</td>
+<td>51</td>
+</tr>
+<tr class="even">
+<td>“Guaraná Fantástica”</td>
+<td>51</td>
+</tr>
+<tr class="odd">
+<td>“Gnocchi di nonna Alice”</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Who is the supplier and what is the category for the top product?</strong></p>
+<pre class="sql"><code>MATCH (s:Supplier)-[r1:SUPPLIES]-&gt;(p:Product {productName: &#39;Raclette Courdavault&#39;})-[r2:PART_OF]-&gt;(c:Category)
+RETURN s, r1, p, r2, c;</code></pre>
+<p>Answer</p>
+<p align="center" width="10" height="7">
+<img src="https://github.com/franckess/neo4j_practice/blob/master/figs/question_2.png?raw=true" />
+</p>
+<p><strong>Who is the top Employee with the Highest Cross-Selling Count of the top product and Another Product?</strong></p>
+<pre class="sql"><code>MATCH (choc:Product {productName:&#39;Raclette Courdavault&#39;})&lt;-[:CONTAINS]-(:Order)&lt;-[:SOLD]-(employee),
+      (employee)-[:SOLD]-&gt;(o2)-[:CONTAINS]-&gt;(other:Product)
+RETURN employee.employeeID as employee, other.productName as otherProduct, count(distinct o2) as count
+ORDER BY count DESC
+LIMIT 1;</code></pre>
+<p>Answer</p>
+<table>
+<thead>
+<tr class="header">
+<th>employee</th>
+<th>otherProduct</th>
+<th>count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td>“Gnocchi di nonna Alice”</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="closing-notes" class="section level2">
+<h2>Closing notes</h2>
+<p>So for this blogpost, I introduced Neo4j and what can be done with it. It is worth mentioning that <em>it may not be a good idea to represent the data as a graph</em>. You can try it, and you might come up with a useful representation, but there’s no gaurantees that graph-based methods will be useful. The key question is: <strong>are there relationships between my datapoints that will help me solve a specific task?</strong> It’s not always clear in advance, and some exploratory data analysis can be helpful.</p>
+<p>There can be some ambiguity in whether a column should be a node or a node property. For example, the country of a user could be a property of the User node, or might be its own node that relates users via a “user-lives_in-country” relation. <strong>There is no single answer</strong>, and it will likely require experimentation to find an optimal representation for the task at hand.</p>
+<p>Here is the link to GitHub repository with all my codes: <a href="https://github.com/franckess/neo4j_practice/tree/master">https://github.com/franckess/neo4j_practice/tree/master</a></p>
+<p>Enjoy :)</p>
+</div>
