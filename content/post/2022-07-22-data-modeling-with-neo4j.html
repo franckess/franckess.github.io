@@ -31,7 +31,7 @@ draft: false
 
 
 
-<p>This blogpost is about gaining an intuition for converting tabular-structured data into graph-structured data and store into Graph database for further analysis.</p>
+<p>The purpose of my new blogpost is to gain an intuition for converting tabular-structured data into graph-structured data and store into Graph database for further analysis using Neo4j.</p>
 <div id="key-concepts" class="section level2">
 <h2>Key Concepts</h2>
 <div id="definitions" class="section level3">
@@ -50,7 +50,7 @@ draft: false
 </div>
 <div id="data-modeling-to-graph" class="section level3">
 <h3>Data Modeling to Graph</h3>
-<p>As a general approach, review the Neo4j’s <a href="https://neo4j.com/developer/relational-to-graph-modeling/">guide</a> on converting relational databases to graph databases. A condensed summary of the steps to help you with the transformation of a relational diagram are listed below.</p>
+<p>As a general approach, please review the Neo4j’s <a href="https://neo4j.com/developer/relational-to-graph-modeling/">guide</a> on converting relational databases to graph databases. A condensed summary of the steps to help you with the transformation of a relational diagram are listed below.</p>
 <ul>
 <li><strong>Table to Node Label</strong> - each entity table in the relational model becomes a label on nodes in the graph model.</li>
 <li><strong>Row to Node</strong> - each row in a relational entity table becomes a node in the graph.</li>
@@ -77,12 +77,13 @@ Visually, it will look like this:
 <p align="center" width="10" height="7">
 <img src="https://dist.neo4j.com/wp-content/uploads/sample-cypher.png" />
 </p>
-<p>Neo4j users use Cypher to construct expressive and efficient queries to do any kind of create, read, update, or delete (CRUD) on their graph, and Cypher is the primary interface for Neo4j.</p>
+<p>Neo4j users use Cypher to construct expressive and efficient queries to do any kind of create, read, update, or delete (CRUD) on their graph. Additionally, Cypher is the primary interface for Neo4j.</p>
 </div>
 </div>
-<div id="practical-application" class="section level2">
-<h2>Practical application</h2>
-<p>Now that we have explored some key concepts, let’s dive into an actual example. For that matter, I am going to use the <a href="https://gist.github.com/maruthiprithivi/072b526e20fe16a29f98db07f569861d">NorthWind dataset</a> which provides information about a product sale system on - <em>suppliers, products, order details, categories, employees, &amp; orders</em>. The entity-relationship diagram is shown below:</p>
+<div id="practical-use-case-northwind-database" class="section level2">
+<h2>Practical Use-Case: NorthWind Database</h2>
+<p>Now that we have explored some key concepts, let’s dive into an actual example.
+For that matter, I am going to use the <a href="https://gist.github.com/maruthiprithivi/072b526e20fe16a29f98db07f569861d">NorthWind dataset</a> which provides information about a product sale system on - <em>suppliers, products, order details, categories, employees, &amp; orders</em>. The entity-relationship diagram is shown below:</p>
 <p align="center" width="10" height="7">
 <img src="https://github.com/franckess/neo4j_practice/blob/master/figs/northwind_data_diagram.png?raw=true" />
 </p>
@@ -169,8 +170,8 @@ Creating Neo4j ... done
 Creating pgadmin ... done
 Creating db      ... done
 ...</code></pre>
-<p>When it comes to integrate Neo4j with other databases, the APOC library offers support including relational databases (via JDBC), MongoDB, Elastic, and Couchbase (Here is the <a href="https://neo4j.com/developer/relational-to-graph-import/">link</a> to find out more). It also has support for importing data from LDAP directories and executing queries against other Neo4j databases.</p>
-<p>For this use-case, I am importing the NorthWind dataset from postgres database straight into Neo4j. The syntax will look like this:</p>
+<p>When it comes to integrate Neo4j with other databases, the <code>APOC</code> library offers support including relational databases (via JDBC), MongoDB, Elastic, and Couchbase. It also has support for importing data from LDAP directories and executing queries against other Neo4j databases. Here is the <a href="https://neo4j.com/developer/relational-to-graph-import/">link</a> to find out more.</p>
+<p>For this example, I am importing the NorthWind database from PostGres straight into Neo4j. The syntax will look like this:</p>
 <pre class="sql"><code>CALL apoc.load.jdbc(&quot;jdbc:postgresql://pgdatabase/northwind?user=root&amp;password=root&quot;, &lt;table_name/query&gt;)</code></pre>
 </div>
 <div id="create-nodes-and-relationships" class="section level3">
@@ -345,8 +346,8 @@ LIMIT 1;</code></pre>
 </div>
 <div id="closing-notes" class="section level2">
 <h2>Closing notes</h2>
-<p>So for this blogpost, I introduced Neo4j and what can be done with it. It is worth mentioning that <em>it may not be a good idea to represent the data as a graph</em>. You can try it, and you might come up with a useful representation, but there’s no gaurantees that graph-based methods will be useful. The key question is: <strong>are there relationships between my datapoints that will help me solve a specific task?</strong> It’s not always clear in advance, and some exploratory data analysis can be helpful.</p>
-<p>There can be some ambiguity in whether a column should be a node or a node property. For example, the country of a user could be a property of the User node, or might be its own node that relates users via a “user-lives_in-country” relation. <strong>There is no single answer</strong>, and it will likely require experimentation to find an optimal representation for the task at hand.</p>
+<p>So for this blogpost, I introduced Neo4j and what can be done with it. It is worth mentioning that <em>modeling your tabular data as graph data depends on your use-case</em>. The methodology described above provides a framework, but you might come up with a useful representation.</p>
+<p>However, you may have to ask yourself the following question: <strong>are there relationships between my datapoints that will help me solve a specific task?</strong> It’s not always clear in advance, and some exploratory data analysis can be helpful. There can be some ambiguity in whether a column should be a node or a node property. For example, the country of a user could be a property of the User node, or might be its own node that relates users via a <code>user-lives_in-country</code> relationship. <strong>There is no single answer</strong>, and it will likely require experimentation to find an optimal representation for the task at hand.</p>
+<p>I hope you enjoyed reading this blogpost :)</p>
 <p>Here is the link to GitHub repository with all my codes: <a href="https://github.com/franckess/neo4j_practice/tree/master">https://github.com/franckess/neo4j_practice/tree/master</a></p>
-<p>Enjoy :)</p>
 </div>
