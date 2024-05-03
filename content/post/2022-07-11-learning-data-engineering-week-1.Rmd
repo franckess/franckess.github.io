@@ -1,0 +1,30 @@
+---
+title: Learning Data Engineering (Week 1)
+author: Rene Essomba
+date: '2022-07-11'
+slug: 'learning-data-engineering-week-1'
+categories:
+  - GCP
+  - Docker
+  - Terraform
+tags:
+  - Data Engineerirng
+coverImage: https://images.pexels.com/photos/2832071/pexels-photo-2832071.jpeg?cs=srgb&dl=pexels-felix-mittermeier-2832071.jpg&fm=jpg
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: true
+thumbnailImagePosition : left
+thumbnailImage: https://images.pexels.com/photos/6272248/pexels-photo-6272248.jpeg?cs=srgb&dl=pexels-enric-cruz-l%C3%B3pez-6272248.jpg&fm=jpg
+editor_options: 
+  chunk_output_type: console
+output:
+  blogdown::html_page
+comments: yes
+readingtime: '1'
+coverCaption: Photo obtained from Felix Mittermeier on Pexels.com
+hidedate: true
+draft: false
+---
+
+

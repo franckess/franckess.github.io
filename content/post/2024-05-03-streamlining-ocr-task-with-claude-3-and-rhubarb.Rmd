@@ -1,0 +1,33 @@
+---
+title: Streamlining OCR Task with Claude 3 & Rhubarb
+author: Rene Essomba
+date: '2024-05-03'
+slug: streamlining-ocr-task-with-claude-3-and-rhubarb
+categories:
+  - Large Language Model
+  - AWS
+tags:
+  - Generative AI
+coverImage: https://images.pexels.com/photos/5407054/pexels-photo-5407054.jpeg?cs=srgb&dl=pexels-dids-5407054.jpg&fm=jpg
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: true
+thumbnailImagePosition : left
+thumbnailImage: https://images.pexels.com/photos/17483848/pexels-photo-17483848/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-depicts-a-look-inside-how-ai-microchips-are-designed-it-was-created-by-champ-panupong-techawongthawon-as-part-of-the-v.png
+editor_options: 
+  chunk_output_type: console
+output:
+  blogdown::html_page
+comments: yes
+readingtime: '5'
+coverCaption: Photo obtained from Dids on Pexels.com
+hidedate: true
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+Over the last decades, technology has been advancing faster making data processing accessible, cheap and ultra-fast for everyone. The combination of engineering practices with the scientific method will ex
